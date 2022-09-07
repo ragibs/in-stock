@@ -1,0 +1,66 @@
+@use "../../styles/global.scss" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+.Header {
+    padding-right: 2rem;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $divider;
+
+    &__edit-button {
+        background-color: $interactive-elements;
+        color: $white-global;
+        border-radius: 25px;
+        width: 5rem;
+        height: 2.5rem;
+        text-align: center;
+    }
+
+    &__edit-icon {
+        color: $white-global;
+    }
+}
+
+.warehouse-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    &__title {
+        color: $table-colum-ph;
+        font-size: 1rem;
+    }
+
+    &__info {
+        margin: 0;
+    }
+
+    &__name {
+        border-left: 1px solid $divider;
+        padding-left: 2.5rem;
+    }
+}
+
+.Inventory {
+    &__header {
+        margin: none;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: $table-colum-ph;
+        background-color: $bg-page;
+    }
+
+    &__items {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        justify-content: space-between;
+    }
+}
