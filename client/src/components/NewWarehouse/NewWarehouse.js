@@ -6,14 +6,14 @@ import ArrowBack from "../../assets/Icons/ArrowBack-24px.svg";
 
 function NewWarehouse() {
   const [warehouseDetails, setWarehouseDetails] = useState({
-    name: "",
+    warehouseName: "",
     street: "",
     city: "",
     country: "",
   });
 
   const [contactDetails, setContactDetails] = useState({
-    name: "",
+    contactName: "",
     position: "",
     phone: "",
     email: "",
@@ -33,6 +33,27 @@ function NewWarehouse() {
       ...contactDetails,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const validateForm = () => {
+    const validatePhone = (phone) => {
+      const regEx = /^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$/im;
+      const isValid = regEx.test(phone);
+      return isValid;
+    };
+
+    const validateEmail = (email) => {
+      if (email === "" || !email.includes("@")) {
+        return false;
+      }
+      return true;
+    };
+
+    // No fields can be blank
+    // Phone and email must validate correctly
+
+    // If no errors, return true
+    return true;
   };
 
   const handleSubmit = (e) => {
@@ -55,7 +76,7 @@ function NewWarehouse() {
             <input
               name="warehouse-name"
               placeholder="Warehouse Name"
-              value={warehouseDetails.name}
+              value={warehouseDetails.warehouseName}
               onChange={handleWarehouseChange}
             />
           </label>
@@ -94,7 +115,7 @@ function NewWarehouse() {
             <input
               name="contact-name"
               placeholder="Contact Name"
-              value={contactDetails.name}
+              value={contactDetails.contactName}
               onChange={handleContactChange}
             />
           </label>
