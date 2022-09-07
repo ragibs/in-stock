@@ -2,3 +2,16 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer__text {
+  @include body-small-mobile;
+  color: $table-colum-ph; //changed color as per mock up
+  @include tablet {
+    @include body-small-tablet;
+  }
+}
