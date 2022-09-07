@@ -4,6 +4,7 @@ const fs = require("fs");
 const cors = require("cors");
 require("dotenv").config();
 const { PORT, BACKEND_URL } = process.env;
+const warehousesRoutes = require("./routes/warehousesRoutes");
 
 //cors middleware
 app.use(cors());
@@ -15,3 +16,5 @@ app.use(express.json());
 app.listen(PORT, () => {
   console.log("We are live!✈️");
 });
+
+app.use("/warehouses", warehousesRoutes);
