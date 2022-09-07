@@ -3,14 +3,25 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
 
+
 .Header {
-    padding-right: 2rem;
-    padding-left: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $divider;
+
+    @include tablet {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: row;
+        @include h1-mobile;
+
+    }
 
     &__edit-button {
         background-color: $interactive-elements;
@@ -19,48 +30,145 @@
         width: 5rem;
         height: 2.5rem;
         text-align: center;
+        display: none;
+
+        @include tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__edit-button__mobile {
+        background-color: $interactive-elements;
+        color: $white-global;
+        border-radius: 25px;
+        width: 2.5rem;
+        height: 2.5rem;
+        text-align: center;
+
+        @include tablet {
+            display: none;
+        }
     }
 
     &__edit-icon {
-        color: $white-global;
+        fill: white;
     }
 }
 
 .warehouse-details {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    border-bottom: 1px solid $divider;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @include tablet {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+    }
 
     &__title {
+        @include h4-mobile;
         color: $table-colum-ph;
-        font-size: 1rem;
     }
 
     &__info {
         margin: 0;
+        @include body-medium-mobile
     }
 
-    &__name {
-        border-left: 1px solid $divider;
-        padding-left: 2.5rem;
+    &__contact {
+        padding-left: 1.5rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @include tablet {
+            border-left: 1px solid $divider;
+            padding-left: 2.5rem;
+            width: 50vw;
+        }
     }
 }
 
 .Inventory {
+
+
     &__header {
-        margin: none;
+        display: none;
         list-style: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        color: $table-colum-ph;
-        background-color: $bg-page;
+
+        @include tablet {
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            color: $table-colum-ph;
+            background-color: $bg-page;
+            @include h4-tablet;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
     }
 
     &__items {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        list-style: none;
         display: flex;
         flex-direction: row;
-        list-style: none;
         justify-content: space-between;
+        flex-wrap: wrap;
+
+        @include tablet {
+            justify-content: space-between;
+            flex-wrap: nowrap;
+
+        }
+
+        &-title {
+            @include h4-mobile;
+
+            @include tablet {
+                display: none;
+            }
+        }
+
+        &-name {
+            margin-bottom: 1rem;
+        }
+
+        &-status {
+            margin-bottom: 1rem;
+        }
+
+        &-actions {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            width: 100vw;
+
+            @include tablet {
+                width: 20vw;
+                justify-content: center;
+                padding: .5rem;
+            }
+        }
+
+        &-container {
+            @include tablet {
+                display: flex;
+                flex-direction: row;
+                width: 50vw;
+                justify-content: space-around;
+            }
+        }
+
     }
 }
