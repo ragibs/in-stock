@@ -6,6 +6,8 @@ require("dotenv").config();
 const { PORT, BACKEND_URL } = process.env;
 const inventories = require('./data/inventories.json')
 const warehouses = require('./data/warehouses.json')
+const warehousesRoutes = require("./routes/warehousesRoutes");
+
 //cors middleware
 app.use(cors());
 
@@ -31,3 +33,5 @@ app.get('/warehouses/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log("We are live!✈️");
 });
+
+app.use("/warehouses", warehousesRoutes);

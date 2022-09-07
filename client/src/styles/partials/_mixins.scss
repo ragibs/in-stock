@@ -1,6 +1,7 @@
 @use "variables" as *;
 @use "colors" as *;
 @use "fonts" as *;
+@use "resets" as *;
 
 //media mixins
 
@@ -33,7 +34,6 @@
   font-weight: 600;
   font-size: 2rem;
   line-height: 2.5rem;
-  color: $primary-text-color;
 }
 
 //H2 - Subheader
@@ -52,7 +52,6 @@
   font-weight: 600;
   font-size: 1.5rem;
   line-height: 2rem;
-  color: $primary-text-color;
 }
 
 //H3 - Labels, Links & Buttons
@@ -70,7 +69,6 @@
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 1.375rem;
-  color: $primary-text-color;
 }
 
 // H4 - table header
@@ -89,7 +87,6 @@
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 1.125rem;
-  color: $primary-text-color;
 }
 
 //P1 - Body Large
@@ -107,7 +104,6 @@
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.75rem;
-  color: $primary-text-color;
 }
 //P1 - Body medium
 @mixin body-medium-mobile {
@@ -124,7 +120,6 @@
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.375rem;
-  color: $primary-text-color;
 }
 //P1 - Body small
 @mixin body-small-mobile {
@@ -141,5 +136,4 @@
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 1.125rem;
-  color: $primary-text-color;
 }
