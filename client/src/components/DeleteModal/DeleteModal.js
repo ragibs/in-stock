@@ -1,9 +1,13 @@
 import "./DeleteModal.scss";
+import axios from "axios";
+
 function DeleteModal() {
   return (
     <div className="deleteModal-bg">
       <div className="deleteModal-container">
-        <button className="deleteModal__close-btn">X</button>
+        <button onClick={cancelHandler} className="deleteModal__close-btn">
+          X
+        </button>
         <div className="deleteModal__text-container">
           <h1 className="deleteModal__title">Delete Washington warehouse?</h1>
           <p className="deleteModal__text">
@@ -12,10 +16,16 @@ function DeleteModal() {
           </p>
         </div>
         <div className="deleteModal__btn-container">
-          <button className="deleteModal__btn deleteModal__btn-cancel">
+          <button
+            onClick={cancelHandler}
+            className="deleteModal__btn deleteModal__btn-cancel"
+          >
             Cancel
           </button>
-          <button className="deleteModal__btn deleteModal__btn-delete ">
+          <button
+            onClick={deleteHandler}
+            className="deleteModal__btn deleteModal__btn-delete "
+          >
             Delete
           </button>
         </div>
