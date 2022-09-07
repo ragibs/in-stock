@@ -19,6 +19,14 @@ app.get('/inventories', (req, res) => {
 app.get('/warehouses', (req, res) => {
   res.send(warehouses)
 })
+
+app.get('/warehouses/:id', (req, res) => {
+  res.send(warehouses.find((obj) => {
+    return obj.id === `${req.params.id}`
+  }))
+})
+
+
 //listener
 app.listen(PORT, () => {
   console.log("We are live!✈️");
