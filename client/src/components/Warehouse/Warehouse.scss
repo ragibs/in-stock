@@ -1,0 +1,124 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors" as *;
+
+.warehouse {
+    border-top: solid 1px $divider;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    &__top{
+        padding: 1.5rem;
+
+    }
+    &__title{
+        padding-bottom: 1rem;
+    }
+    &__topright{
+        display: flex;
+        flex-direction: column;
+    }
+    &__search{
+        background-image: url("../../assets/Icons/search-24px.svg");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;  
+        background-position-y: center;    
+        padding-left: 1rem;
+        border: solid 1px $divider;
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        margin-bottom: 1rem;
+        &::placeholder {
+            @include body-medium-mobile;
+            color: $table-colum-ph;
+        }
+    }
+    &__button{        
+        @include body-medium-mobile;
+        color: white;
+        border-radius: 1.25rem;
+        height: 2.25rem;
+        background-color: $interactive-elements;
+        border: none;
+        padding: 0.5rem;
+    }
+    &__text{
+        display: flex;
+        flex-direction: row;
+    }
+    &__left{
+        width: 50%;
+        padding-right: 2rem;
+    }
+    &__right{
+        width: 50%;
+    }
+    &__link{        
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 1rem;
+        &::before {
+            padding-bottom: 0.25rem;
+            @include h4-mobile;
+            color: $table-colum-ph;
+            content: "WAREHOUSE"
+        }
+    }
+    &__nameAndArrow{
+        display: flex;
+        flex-direction: row;        
+    }
+    &__name{        
+        @include body-medium-mobile;
+        font-weight: 600;
+        color: $interactive-elements;
+    }
+    &__rightArrow{
+        height: 1.25rem;
+    }
+    &__address{        
+        @include body-medium-mobile;
+        display: flex;
+        flex-direction: column;  
+        padding-bottom: 1rem;      
+        &::before {
+            padding-bottom: 0.25rem;
+            @include h4-mobile;
+            color: $table-colum-ph;
+            content: "ADDRESS"
+        }
+    }
+    &__contact{        
+        @include body-medium-mobile;
+        display: flex;
+        flex-direction: column;  
+        padding-bottom: 1rem;      
+        &::before {
+            padding-bottom: 0.25rem;
+            @include h4-mobile;
+            color: $table-colum-ph;
+            content: "CONTACT NAME"
+        }
+    }
+    &__contactinfo{        
+        @include body-medium-mobile;
+        display: flex;
+        flex-direction: column;  
+        padding-bottom: 1rem;      
+        &::before {
+            padding-bottom: 0.25rem;
+            @include h4-mobile;
+            color: $table-colum-ph;
+            content: "CONTACT INFORMATION"
+        }
+    }
+    &__icons{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__deleteicon{
+
+    }
+    &__editicon{
+
+    }
+}
