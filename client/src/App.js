@@ -2,7 +2,9 @@ import "./App.scss";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
+import HomePage from "./pages/HomePage/HomePage";
+
+
 
 function App() {
   return (
@@ -11,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/warehouses" element={<Warehouse />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
           <Route path="/inventory" element={<Inventory />}></Route>
         </Routes>
         <Footer />

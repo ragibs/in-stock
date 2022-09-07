@@ -3,6 +3,7 @@
 @use "./partials/variables" as *;
 @use "./partials/colors" as *;
 @use "./partials/mixins" as *;
+@use "./partials/resets" as *;
 
 *,
 *::before,
