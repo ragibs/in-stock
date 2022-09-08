@@ -5,6 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const { PORT, BACKEND_URL } = process.env;
 const warehousesRoutes = require("./routes/warehousesRoutes");
+const inventoryRoutes = require("./routes/inventoryRoutes");
 
 //cors middleware
 app.use(cors());
@@ -18,3 +19,5 @@ app.listen(PORT, () => {
 });
 
 app.use("/warehouses", warehousesRoutes);
+
+app.use("/inventories", inventoryRoutes);
