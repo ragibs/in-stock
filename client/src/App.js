@@ -7,6 +7,7 @@ import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
 
+
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/inventory" element={<InventoryPage />}></Route>
           <Route path="/new-warehouse" element={<NewWarehouse />}></Route>
+
         </Routes>
         <Footer />
       </BrowserRouter>
