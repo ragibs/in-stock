@@ -73,7 +73,10 @@ function Warehouse(props) {
                             </div>
                             <div className="warehouse__right">
                                 <p className="warehouse__contact">{warehouse.contact.name}</p>
-                                <p className="warehouse__contactinfo">{warehouse.contact.phone}<p>{warehouse.contact.email}</p></p>
+                                <p className="warehouse__contactinfo">
+                                    <span>{warehouse.contact.phone}</span>
+                                    <span>{warehouse.contact.email}</span>
+                                </p>
                             </div>
 
                         </div>
