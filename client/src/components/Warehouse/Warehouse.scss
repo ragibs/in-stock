@@ -19,7 +19,6 @@
         flex-direction: row;
         align-items: center;
     }
-
     &__container{
         background-color: white;
         margin: -5rem 1rem 5rem;
@@ -33,7 +32,6 @@
         }
     }
     &__top{
-
         padding: 1.5rem;
 
         @include tablet {
@@ -113,6 +111,7 @@
         padding: 0.5rem;
 
         @include tablet {
+            width: 11rem;
             padding: 0 1rem;
             height: 2.375rem;
             @include body-medium-tablet
@@ -321,7 +320,6 @@
     &__icons {
         display: flex;
         justify-content: space-between;
-
         @include tablet {            
             width: 15%;
             height: 1.5rem;
@@ -332,7 +330,6 @@
         //     height: 1.5rem;
         //     justify-content: flex-end;  
         // }  
-
     }
 
     &__deleteicon {
