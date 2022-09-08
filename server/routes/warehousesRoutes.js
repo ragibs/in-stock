@@ -3,7 +3,7 @@ const app = express();
 const fs = require("fs");
 const cors = require("cors");
 app.use(cors());
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 app.use(express.json());
 
 const { v4: uuidv4 } = require("uuid");
@@ -95,18 +95,19 @@ router.post("/new", (req, res) => {
   }
 });
 
-
-
-router.get("/:id", (req, res) => {
-    let warehouseID = warehouseData.find((warehouse) => warehouse.id === req.params.id);
-    if (warehouseID) {
-        res.json(warehouseID);
-    } else {
-        res.status(404).send(" requested warehouse not found");
-    }
+//router delete
+router.delete("/:id", (req, res) => {
+  let warehouseID = warehouseData.find(
+    (warehouse) => warehouse.id === req.params.id
+  );
+  if (warehouseID) {
+    let index = warehouseData.indexOf(warehouseID);
+    warehouseData.splice(index, 1);
+    fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouseData));
+    res.json(warehouseData); //sendback updated json
+  } else {
+    res.status(404).send(" requested warehouse not found");
+  }
 });
 
 module.exports = router;
-
-
-

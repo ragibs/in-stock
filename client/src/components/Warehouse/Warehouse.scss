@@ -5,336 +5,342 @@
 @use "../../styles/partials/variables" as *;
 
 .warehouse {
-    border-top: solid 1px $divider;
+  border-top: solid 1px $divider;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    background-color: $bg-page;
+  }
+
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__container {
+    background-color: white;
+    margin: -5rem 1rem 5rem;
+    border-radius: 5px;
+    @include tablet {
+      margin: -5.5rem 2rem 5.5rem;
+    }
+    @include desktop {
+      max-width: $desktop-breakpoint;
+      margin: -5.5rem auto 5.5rem;
+    }
+  }
+  &__top {
     padding: 1.5rem;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 0;
+    }
+  }
+
+  &__topright {
     display: flex;
     flex-direction: column;
 
-    &:hover {
-        background-color: $bg-page;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      width: 60%;
+      justify-content: flex-end;
+    }
+  }
+
+  &__search {
+    background-image: url("../../assets/Icons/search-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-position-y: center;
+    padding-left: 1rem;
+    border: solid 1px $divider;
+    border-radius: 1.25rem;
+    height: 2.25rem;
+    margin-bottom: 1rem;
+
+    &:focus {
+      outline: 1px solid $interactive-elements;
+    }
+
+    &::placeholder {
+      @include body-medium-mobile;
+      color: $table-colum-ph;
+
+      @include tablet {
+        @include body-medium-tablet;
+      }
     }
 
     @include tablet {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    &__container{
-        background-color: white;
-        margin: -5rem 1rem 5rem;
-        border-radius: 5px;
-        @include tablet{
-            margin: -5.5rem 2rem 5.5rem;
-        }
-        @include desktop {
-            max-width: $desktop-breakpoint;            
-            margin: -5.5rem auto 5.5rem;            
-        }
-    }
-    &__top{
-        padding: 1.5rem;
+      height: 2.375rem;
+      margin-bottom: 0;
+      margin-right: 1rem;
 
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
+      width: 55%;
     }
+    // @include desktop {
+    //     height: 2.375rem;
+    //     margin-bottom: 0;
+    //     margin-right: 1rem;
+    //     width: 25rem;
+    // }
+  }
 
-    &__title {
-        padding-bottom: 1rem;
+  &__button {
+    @include body-medium-mobile;
+    color: white;
+    border-radius: 1.25rem;
+    height: 2.25rem;
+    background-color: $interactive-elements;
+    border: none;
+    padding: 0.5rem;
 
-        @include tablet {
-            padding-bottom: 0;
-        }
+    @include tablet {
+      padding: 0 1rem;
+      height: 2.375rem;
+      @include body-medium-tablet;
     }
 
-    &__topright {
-        display: flex;
-        flex-direction: column;
-
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            width: 60%;
-            justify-content: flex-end;
-        }
+    &:hover {
+      background-color: $bg-hover-header;
     }
-
-    &__search {
-        background-image: url("../../assets/Icons/search-24px.svg");
-        background-repeat: no-repeat;
-        background-position: right 1rem center;
-        background-position-y: center;
-        padding-left: 1rem;
-        border: solid 1px $divider;
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        margin-bottom: 1rem;
-
-        &:focus {
-            outline: 1px solid $interactive-elements;
-        }
-
-        &::placeholder {
-            @include body-medium-mobile;
-            color: $table-colum-ph;
-
-            @include tablet {
-                @include body-medium-tablet;
-            }
-        }
-
-        @include tablet {
-            height: 2.375rem;
-            margin-bottom: 0;
-            margin-right: 1rem;
-
-            width: 55%;             
-
-        }
-        // @include desktop {
-        //     height: 2.375rem;
-        //     margin-bottom: 0;
-        //     margin-right: 1rem; 
-        //     width: 25rem;           
-        // }
+  }
+  &__categories {
+    display: none;
+    @include tablet {
+      background-color: $bg-page;
+      height: 2.5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
     }
-
-    &__button {
-        @include body-medium-mobile;
-        color: white;
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        background-color: $interactive-elements;
-        border: none;
-        padding: 0.5rem;
-
-        @include tablet {
-            width: 11rem;
-            padding: 0 1rem;
-            height: 2.375rem;
-            @include body-medium-tablet
-        }
-
-        &:hover {
-            background-color: $bg-hover-header;
-        }
+  }
+  &__categoryAndArrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 21.25%;
+    // @include desktop {
+    //     width: 22.5%;
+    // }
+  }
+  &__category {
+    @include h4-tablet;
+    color: $table-colum-ph;
+    &--right {
+      text-align: right;
+      @include h4-tablet;
+      width: 15%;
+      color: $table-colum-ph;
+      // @include desktop {
+      //     width: 10%;
+      // }
     }
-    &__categories{
+  }
+  &__sortArrow {
+    padding-left: 0.25rem;
+    height: 1rem;
+  }
+  &__text {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      width: 85%;
+    }
+    // @include desktop{
+    //     width: 90%;
+    // }
+  }
+
+  &__left {
+    width: 50%;
+    padding-right: 2rem;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      width: 50%;
+      padding-right: 0;
+    }
+  }
+
+  &__right {
+    width: 50%;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      width: 50%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "WAREHOUSE";
+
+      @include tablet {
         display: none;
-        @include tablet {
-            background-color: $bg-page;
-            height: 2.5rem;
-            padding: 0 1.5rem;
-            display: flex;
-            flex-direction: row;  
-            align-items: center;                       
-        }
-    }
-    &__categoryAndArrow{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 21.25%;
-        // @include desktop {
-        //     width: 22.5%;
-        // }         
-    }
-    &__category{
-        @include h4-tablet;
-        color: $table-colum-ph;
-        &--right{
-            text-align: right;            
-            @include h4-tablet;
-            width: 15%;
-            color: $table-colum-ph; 
-            // @include desktop {
-            //     width: 10%;
-            // }           
-        }               
-    }
-    &__sortArrow{
-        padding-left: 0.25rem;
-        height: 1rem;
-    }
-    &__text{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            width: 85%;
-        }
-        // @include desktop{
-        //     width: 90%;
-        // }
+      }
     }
 
-    &__left {
-        width: 50%;
-        padding-right: 2rem;
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
+    }
+  }
 
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            width: 50%;
-            padding-right: 0;
-        }
+  &__nameAndArrow {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__name {
+    @include body-medium-mobile;
+    font-weight: 600;
+    color: $interactive-elements;
+
+    &:hover {
+      text-decoration: underline;
     }
 
-    &__right {
-        width: 50%;
+    @include tablet {
+      @include body-medium-tablet;
+      font-weight: 600;
+    }
+  }
 
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            width: 50%;
-        }
+  &__rightArrow {
+    height: 1.25rem;
+  }
+
+  &__address {
+    @include body-medium-mobile;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "ADDRESS";
+
+      @include tablet {
+        display: none;
+      }
     }
 
-    &__link {
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 1rem;
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
+      padding-right: 1rem;
+      @include body-medium-tablet;
+    }
+  }
 
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "WAREHOUSE";
+  &__contact {
+    @include body-medium-mobile;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
 
-            @include tablet {
-                display: none;
-            }
-        }
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "CONTACT NAME";
 
-        @include tablet {
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-        }
+      @include tablet {
+        display: none;
+      }
     }
 
-    &__nameAndArrow {
-        display: flex;
-        flex-direction: row;
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
+      @include body-medium-tablet;
+    }
+  }
+
+  &__contactinfo {
+    @include body-medium-mobile;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "CONTACT INFORMATION";
+
+      @include tablet {
+        display: none;
+      }
     }
 
-    &__name {
-        @include body-medium-mobile;
-        font-weight: 600;
-        color: $interactive-elements;
-
-        &:hover {
-            text-decoration: underline;
-        }
-
-        @include tablet {
-            @include body-medium-tablet;
-            font-weight: 600;
-        }
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
+      @include body-medium-tablet;
     }
+  }
 
-    &__rightArrow {
-        height: 1.25rem;
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      width: 15%;
+      height: 1.5rem;
+      justify-content: flex-end;
     }
+    // @include desktop {
+    //     width: 10%;
+    //     height: 1.5rem;
+    //     justify-content: flex-end;
+    // }
+  }
 
-    &__address {
-        @include body-medium-mobile;
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 1rem;
-
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "ADDRESS";
-
-            @include tablet {
-                display: none;
-            }
-        }
-
-        @include tablet {
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-            padding-right: 1rem;
-            @include body-medium-tablet;
-        }
+  &__deleteicon {
+    margin-right: 1rem;
+    &:hover {
+      cursor: pointer;
     }
-
-    &__contact {
-        @include body-medium-mobile;
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 1rem;
-
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "CONTACT NAME";
-
-            @include tablet {
-                display: none;
-            }
-        }
-
-        @include tablet {
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-            @include body-medium-tablet;
-        }
+  }
+  &__editicon {
+    &:hover {
+      cursor: pointer;
     }
-
-    &__contactinfo {
-        @include body-medium-mobile;
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 1rem;
-
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "CONTACT INFORMATION";
-
-            @include tablet {
-                display: none;
-            }
-        }
-
-        @include tablet {
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-            @include body-medium-tablet;
-        }
-    }
-
-    &__icons {
-        display: flex;
-        justify-content: space-between;
-        @include tablet {            
-            width: 15%;
-            height: 1.5rem;
-            justify-content: flex-end;            
-        }
-        // @include desktop {
-        //     width: 10%;
-        //     height: 1.5rem;
-        //     justify-content: flex-end;  
-        // }  
-    }
-
-    &__deleteicon {
-        margin-right: 1rem;
-    }
-
-    &__editicon {}
+  }
 }

@@ -15,7 +15,7 @@ function HomePage() {
         setWarehousesData(response.data);
       })
       .catch((err) => console.error(err));
-  }, []);
+  }, [warehousesData]);
 
   return (
     <>
