@@ -7,6 +7,7 @@ const { PORT, BACKEND_URL } = process.env;
 const inventories = require('./data/inventories.json')
 const warehouses = require('./data/warehouses.json')
 const warehousesRoutes = require("./routes/warehousesRoutes");
+const inventoryRoutes = require("./routes/inventoryRoutes");
 
 //cors middleware
 app.use(cors());
@@ -14,9 +15,11 @@ app.use(cors());
 //middleware to give us access to req.body
 app.use(express.json());
 
-app.get('/inventories', (req, res) => {
-  res.send(inventories)
-})
+
+app.use("/warehouses", warehousesRoutes);
+
+app.use("/inventories", inventoryRoutes);
+
 
 app.get('/warehouses', (req, res) => {
   res.send(warehouses)
@@ -26,6 +29,8 @@ app.get('/warehouses/:id', (req, res) => {
   res.send(warehouses.find((obj) => {
     return obj.id === `${req.params.id}`
   }))
+
+
 })
 
 
