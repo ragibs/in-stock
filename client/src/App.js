@@ -5,6 +5,7 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
+
 function App() {
   return (
     <div className="App">
