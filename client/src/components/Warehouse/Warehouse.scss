@@ -1,5 +1,8 @@
-@use "../../styles/partials/mixins" as *;
+@use "../../styles/global.scss" as *;
 @use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
 
 .warehouse {
     border-top: solid 1px $divider;
@@ -13,6 +16,18 @@
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+    &__container{
+        background-color: white;
+        margin: -5rem 1rem 0;
+        border-radius: 5px;
+        @include tablet{
+            margin: -5.5rem 2rem;
+        }
+        @include desktop {
+            max-width: $desktop-breakpoint;            
+            margin: -5.5rem auto;            
+        }
     }
     &__top{
         padding: 1.5rem;
@@ -34,6 +49,8 @@
         @include tablet {
             display: flex;
             flex-direction: row;
+            width: 60%;
+            justify-content: flex-end;
         }
     }
     &__search{
@@ -59,14 +76,15 @@
         @include tablet {
             height: 2.375rem;
             margin-bottom: 0;
-            margin-right: 1rem;            
+            margin-right: 1rem;
+            width: 55%;             
         }
-        @include desktop {
-            height: 2.375rem;
-            margin-bottom: 0;
-            margin-right: 1rem; 
-            width: 25rem;           
-        }
+        // @include desktop {
+        //     height: 2.375rem;
+        //     margin-bottom: 0;
+        //     margin-right: 1rem; 
+        //     width: 25rem;           
+        // }
     }
     &__button{        
         @include body-medium-mobile;
@@ -100,10 +118,10 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: 20%;
-        @include desktop {
-            width: 22.5%;
-        }         
+        width: 21.25%;
+        // @include desktop {
+        //     width: 22.5%;
+        // }         
     }
     &__category{
         @include h4-tablet;
@@ -111,11 +129,11 @@
         &--right{
             text-align: right;            
             @include h4-tablet;
-            width: 20%;
+            width: 15%;
             color: $table-colum-ph; 
-            @include desktop {
-                width: 10%;
-            }           
+            // @include desktop {
+            //     width: 10%;
+            // }           
         }               
     }
     &__sortArrow{
@@ -125,10 +143,15 @@
     &__text{
         display: flex;
         flex-direction: row;
-        width: 80%;
-        @include desktop{
-            width: 90%;
+        width: 100%;
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            width: 85%;
         }
+        // @include desktop{
+        //     width: 90%;
+        // }
     }
     &__left{
         width: 50%;
@@ -254,15 +277,15 @@
         display: flex;
         justify-content: space-between;
         @include tablet {            
-            width: 20%;
+            width: 15%;
             height: 1.5rem;
             justify-content: flex-end;            
         }
-        @include desktop {
-            width: 10%;
-            height: 1.5rem;
-            justify-content: flex-end;  
-        }  
+        // @include desktop {
+        //     width: 10%;
+        //     height: 1.5rem;
+        //     justify-content: flex-end;  
+        // }  
     }
     &__deleteicon{
         margin-right: 1rem;
