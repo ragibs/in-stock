@@ -18,9 +18,10 @@ function Warehouse({ warehousesData }) {
     setDeleteWarehouse([name, id]);
     setDeleteModal(true);
   };
-    return (  
 
-        <>
+    return (
+        <div className="warehouse__container">
+
             <div className="warehouse__top">
                 <h1 className="warehouse__title">Warehouses</h1>
                 <div className="warehouse__topright">
@@ -29,6 +30,26 @@ function Warehouse({ warehousesData }) {
                 </div>
             </div>
 
+            <div className='warehouse__categories'>
+                <div className='warehouse__categoryAndArrow'>
+                    <span className='warehouse__category'>WAREHOUSE</span>
+                    <img src={sortArrow} className="warehouse__sortArrow"/>
+                </div>
+                <div className='warehouse__categoryAndArrow'>
+                    <span className='warehouse__category'>ADDRESS</span>
+                    <img src={sortArrow} className="warehouse__sortArrow"/>
+                </div>
+                <div className='warehouse__categoryAndArrow'>
+                    <span className='warehouse__category'>CONTACT NAME</span>
+                    <img src={sortArrow} className="warehouse__sortArrow"/>
+                </div>
+                <div className='warehouse__categoryAndArrow'>
+                    <span className='warehouse__category'>CONTACT INFORMATION</span>
+                    <img src={sortArrow} className="warehouse__sortArrow"/>
+                </div>
+                <span className='warehouse__category--right'>ACTIONS</span>
+            </div>       
+
             {props.warehousesData.map((thumb) =>
                 <div className="warehouse" key={thumb.id}>
                     <div className="warehouse__text">
@@ -36,8 +57,10 @@ function Warehouse({ warehousesData }) {
                             <Link to={`/warehouses/${thumb.id}`} className="warehouse__link">
                                 <div className="warehouse__nameAndArrow">
                                     <p className="warehouse__name">{thumb.name}</p>
-                                    <img src={rightArrow} className="warehouse__rightArrow" />
-                                </div>
+
+                                    <img src={rightArrow} className="warehouse__rightArrow"/>
+                                </div>                            
+
                             </Link>
                             <p className="warehouse__address">{thumb.address}, {thumb.city}, {thumb.country}</p>
                         </div>
@@ -45,6 +68,7 @@ function Warehouse({ warehousesData }) {
                             <p className="warehouse__contact">{thumb.contact.name}</p>
                             <p className="warehouse__contactinfo">{thumb.contact.phone}<p>{thumb.contact.email}</p></p>
                         </div>
+
                     </div>
                     <div className="warehouse__icons">
                         <img src={deleteIcon} className="warehouse__deleteicon" />
@@ -110,6 +134,7 @@ function Warehouse({ warehousesData }) {
       ))}
     </>
   );
+
 
 }
 
