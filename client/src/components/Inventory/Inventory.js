@@ -7,62 +7,62 @@ import sortArrow from "../../assets/Icons/sort-24px.svg"
 
 function Inventory(props) {     
     return (   
-        <>
-        <div className="warehouse__top">
-            <h1 className="warehouse__title">Inventory</h1>
-            <div className="warehouse__topright">
-                <input type="text" className="warehouse__search" placeholder='Search...'></input>
-                <button className="warehouse__button">+ Add New Item</button>
-            </div>
-        </div>
-        <div className='warehouse__categories'>
-            <div className='warehouse__categoryAndArrow'>
-                <span className='warehouse__category'>INVENTORY ITEM</span>
-                <img src={sortArrow} className="warehouse__sortArrow"/>
-            </div>
-            <div className='warehouse__categoryAndArrow'>
-                <span className='warehouse__category'>CATEGORY</span>
-                <img src={sortArrow} className="warehouse__sortArrow"/>
-            </div>
-            <div className='warehouse__categoryAndArrow'>
-                <span className='warehouse__category'>STATUS</span>
-                <img src={sortArrow} className="warehouse__sortArrow"/>
-            </div>
-            <div className='warehouse__categoryAndArrow'>
-                <span className='warehouse__category'>QTY</span>
-                <img src={sortArrow} className="warehouse__sortArrow"/>
-            </div>
-            <div className='warehouse__categoryAndArrow'>
-                <span className='warehouse__category'>WAREHOUSE</span>
-                <img src={sortArrow} className="warehouse__sortArrow"/>
-            </div>
-            <span className='warehouse__category--right'>ACTIONS</span>
-        </div>       
-        {props.inventoriesData.map((thumb) =>
-            <div className="warehouse" key={thumb.id}>
-                <div className="warehouse__text">
-                    <div className="warehouse__left">
-                        <Link to={`/warehouses/${thumb.id}`} className="warehouse__link">
-                            <div className="warehouse__nameAndArrow">
-                                <p className="warehouse__name">{thumb.itemName}</p>
-                                <img src={rightArrow} className="warehouse__rightArrow"/>
-                            </div>                            
-                        </Link>
-                        <p className="warehouse__address">{thumb.category}</p>
-                    </div>
-                    <div className="warehouse__right">
-                        <p className="warehouse__contact">{thumb.status}</p>
-                        <p className="warehouse__contactinfo">{thumb.quantity}</p>
-                        <p className="warehouse__warehouseName">{thumb.warehouseName}</p>
-                    </div>
+        <div className='inventory__container'>
+            <div className="inventory__top">
+                <h1 className="inventory__title">Inventory</h1>
+                <div className="inventory__topright">
+                    <input type="text" className="inventory__search" placeholder='Search...'></input>
+                    <button className="inventory__button">+ Add New Item</button>
                 </div>
-                <div className="warehouse__icons">
-                    <img src={deleteIcon} className="warehouse__deleteicon"/>
-                    <img src={editIcon} className="warehouse__editicon"/>
-                </div>                
-            </div>              
-        )}
-        </>        
+            </div>
+            <div className='inventory__categories'>
+                <div className='inventory__categoryAndArrow--left'>
+                    <span className='inventory__category'>INVENTORY ITEM</span>
+                    <img src={sortArrow} className="inventory__sortArrow"/>
+                </div>
+                <div className='inventory__categoryAndArrow'>
+                    <span className='inventory__category'>CATEGORY</span>
+                    <img src={sortArrow} className="inventory__sortArrow"/>
+                </div>
+                <div className='inventory__categoryAndArrow'>
+                    <span className='inventory__category'>STATUS</span>
+                    <img src={sortArrow} className="inventory__sortArrow"/>
+                </div>
+                <div className='inventory__categoryAndArrow'>
+                    <span className='inventory__category'>QTY</span>
+                    <img src={sortArrow} className="inventory__sortArrow"/>
+                </div>
+                <div className='inventory__categoryAndArrow'>
+                    <span className='inventory__category'>WAREHOUSE</span>
+                    <img src={sortArrow} className="inventory__sortArrow"/>
+                </div>
+                <span className='inventory__category--right'>ACTIONS</span>
+            </div>       
+            {props.inventoriesData.map((thumb) =>
+                <div className="warehouse" key={thumb.id}>
+                    <div className="inventory__text">
+                        <div className="inventory__left">
+                            <Link to={`/warehouses/${thumb.id}`} className="inventory__link">
+                                <div className="inventory__nameAndArrow">
+                                    <p className="inventory__name">{thumb.itemName}</p>
+                                    <img src={rightArrow} className="inventory__rightArrow"/>
+                                </div>                            
+                            </Link>
+                            <p className="inventory__address">{thumb.category}</p>
+                        </div>
+                        <div className="inventory__right">
+                            <p className="inventory__contact"><span className={thumb.status==="In Stock"?"inventory__statusTagGreen":"inventory__statusTagRed"}>{thumb.status}</span></p>
+                            <p className="inventory__contactinfo">{thumb.quantity}</p>
+                            <p className="inventory__warehouseName">{thumb.warehouseName}</p>
+                        </div>
+                    </div>
+                    <div className="inventory__icons">
+                        <img src={deleteIcon} className="inventory__deleteicon"/>
+                        <img src={editIcon} className="inventory__editicon"/>
+                    </div>                
+                </div>              
+            )}
+        </div>        
     );
 }
 
