@@ -5,46 +5,14 @@ const cors = require("cors");
 app.use(cors());
 const router = express.Router();
 app.use(express.json());
-
-
-const readFile = (fileName) => {
-    const fileContent = JSON.parse(fs.readFileSync(`./data/${fileName}.json`));
-    return fileContent;
-};
-
-router.get("/", function (req, res) {
-    const inventories = readFile("inventories");
-    res.json(inventories);
-});
-
-
-const inventoryData = JSON.parse(fs.readFileSync(`./data/inventories.json`));
-router.get("/", function (req, res) {
-    const inventories = readFile("inventories");
-    res.json(inventories);
-});
-
-//gets list of all of the inventory data based on warehouse ID
-
-router.get("/:id", (req, res) => {
-    let inventory = inventoryData.filter((inventory) => inventory.warehouseID === req.params.id);
-    if (inventory) {
-        res.json(inventory);
-    } else {
-        res.status(404).send(" requested inventory not found");
-    }
-});
-
-module.exports = router;
-
 const { v4: uuidv4 } = require("uuid");
 
+//Helper Functions
 const readFile = (fileName) => {
   const fileContent = JSON.parse(fs.readFileSync(`./data/${fileName}.json`));
   return fileContent;
 };
 
-// Write File
 const writeFile = (data, filename) => {
   fs.writeFileSync(
     `./data/${filename}.json`,
@@ -56,9 +24,21 @@ const writeFile = (data, filename) => {
   return data;
 };
 
+//Routes
 router.get("/", function (req, res) {
-  const inventories = readFile("inventories");
-  res.json(inventories);
+    const inventories = readFile("inventories");
+    res.json(inventories);
+});
+
+//gets list of all of the inventory data based on warehouse ID
+router.get("/:id", (req, res) => {
+  const inventoryData = JSON.parse(fs.readFileSync(`./data/inventories.json`));
+  let inventory = inventoryData.filter((inventory) => inventory.warehouseID === req.params.id);
+  if (inventory) {
+      res.json(inventory);
+  } else {
+      res.status(404).send(" requested inventory not found");
+  }
 });
 
 // POST: Create new Inventory Item
