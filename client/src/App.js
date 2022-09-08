@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
+
 function App() {
   return (
     <div className="App">

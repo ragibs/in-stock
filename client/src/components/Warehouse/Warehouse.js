@@ -1,12 +1,24 @@
-import './Warehouse.scss';
-import { Link } from 'react-router-dom';
-import deleteIcon from "../../assets/Icons/delete_outline-24px.svg"
-import editIcon from "../../assets/Icons/edit-24px.svg"
-import rightArrow from "../../assets/Icons/chevron_right-24px.svg"
+
+import "./Warehouse.scss";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
+import editIcon from "../../assets/Icons/edit-24px.svg";
+import rightArrow from "../../assets/Icons/chevron_right-24px.svg";
+import DeleteModal from "../DeleteModal/DeleteModal";
 import sortArrow from "../../assets/Icons/sort-24px.svg"
 
-function Warehouse(props) {     
-    return (   
+   
+function Warehouse({ warehousesData }) {
+  const [deleteModal, setDeleteModal] = useState(false); //state to control delete modal
+  const [deleteWarehouse, setDeleteWarehouse] = useState([""]); //to pass id to deletemodal to send API delete request
+
+  //delete request handler
+  const delHandle = (name, id) => {
+    setDeleteWarehouse([name, id]);
+    setDeleteModal(true);
+  };
+    return (
         <div className="warehouse__container">
             <div className="warehouse__top">
                 <h1 className="warehouse__title">Warehouses</h1>
@@ -61,6 +73,5 @@ function Warehouse(props) {
     );
 }
 
-export default Warehouse
-
+export default Warehouse;
 
