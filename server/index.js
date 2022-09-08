@@ -40,3 +40,5 @@ app.listen(PORT, () => {
 });
 
 app.use("/warehouses", warehousesRoutes);
+
+app.use("/inventories", inventoryRoutes);
