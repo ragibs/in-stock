@@ -21,14 +21,14 @@
     }
     &__container{
         background-color: white;
-        margin: -5rem 1rem 0;
+        margin: -5rem 1rem 5rem;
         border-radius: 5px;
         @include tablet{
-            margin: -5.5rem 2rem;
+            margin: -5.5rem 2rem 5.5rem;
         }
         @include desktop {
             max-width: $desktop-breakpoint;            
-            margin: -5.5rem auto;            
+            margin: -5.5rem auto 5.5rem;            
         }
     }
     &__top{
@@ -89,7 +89,9 @@
             height: 2.375rem;
             margin-bottom: 0;
             margin-right: 1rem;
+
             width: 55%;             
+
         }
         // @include desktop {
         //     height: 2.375rem;
