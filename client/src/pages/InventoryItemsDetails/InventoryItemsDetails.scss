@@ -1,0 +1,91 @@
+@use "../../styles/global.scss" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+
+.inventory-header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: 1px solid $divider;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    &__editButton-mobile {
+        background-color: $interactive-elements;
+        border-radius: 50%;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__editButton {
+        background-color: $interactive-elements;
+        border-radius: 50%;
+        display: none;
+        color: white;
+        align-items: center;
+
+        @include tablet {
+            display: flex;
+            width: 5rem;
+            border-radius: 25%;
+            justify-content: space-evenly;
+        }
+
+
+    }
+}
+
+.editButton-image {
+    filter: brightness(0) invert(1)
+}
+
+.inventory-body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include tablet {
+        flex-direction: row;
+    }
+}
+
+.inventory-container {
+    @include tablet {
+        padding-bottom: 1rem;
+    }
+}
+
+.inventory-container-status-quantity {
+    display: flex;
+    flex-direction: row;
+}
+
+.inventory-container-status-quantity-warehouse {
+    @include tablet {
+        border-left: 1px solid $divider;
+        padding-left: 1rem;
+    }
+}
+
+.info-title {
+    @include h4-mobile;
+    color: $table-colum-ph;
+    width: 50vw;
+
+    @include tablet {
+        width: 30vw;
+    }
+}
+
+.info-details {
+    @include h4-mobile;
+}
