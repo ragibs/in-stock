@@ -5,7 +5,6 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 
-
 function App() {
   return (
     <div className="App">
@@ -13,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/inventory" element={<Inventory />}></Route>
+          {/* <Route path="/inventory" element={<Inventory />}></Route> */}
           <Route path="/new-warehouse" element={<NewWarehouse />}></Route>
         </Routes>
         <Footer />
