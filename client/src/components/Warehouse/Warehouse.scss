@@ -2,220 +2,219 @@
 @use "../../styles/partials/colors" as *;
 
 .warehouse {
-    border-top: solid 1px $divider;
+  border-top: solid 1px $divider;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    background-color: $bg-page;
+  }
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__top {
     padding: 1.5rem;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  &__title {
+    padding-bottom: 1rem;
+    @include tablet {
+      padding-bottom: 0;
+    }
+  }
+  &__topright {
     display: flex;
     flex-direction: column;
-    &:hover {
-        background-color: $bg-page;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  &__search {
+    background-image: url("../../assets/Icons/search-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-position-y: center;
+    padding-left: 1rem;
+    border: solid 1px $divider;
+    border-radius: 1.25rem;
+    height: 2.25rem;
+    margin-bottom: 1rem;
+    &:focus {
+      outline: 1px solid $interactive-elements;
+    }
+    &::placeholder {
+      @include body-medium-mobile;
+      color: $table-colum-ph;
+      @include tablet {
+        @include body-medium-tablet;
+      }
     }
     @include tablet {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+      height: 2.375rem;
+      margin-bottom: 0;
+      margin-right: 1rem;
     }
-    &__top{
-        padding: 1.5rem;
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
+  }
+  &__button {
+    @include body-medium-mobile;
+    color: white;
+    border-radius: 1.25rem;
+    height: 2.25rem;
+    background-color: $interactive-elements;
+    border: none;
+    padding: 0.5rem;
+    @include tablet {
+      padding: 0 1rem;
+      height: 2.375rem;
+      @include body-medium-tablet;
     }
-    &__title{
-        padding-bottom: 1rem;   
-        @include tablet {
-            padding-bottom: 0;
-        }     
+    &:hover {
+      background-color: $bg-hover-header;
     }
-    &__topright{
-        display: flex;
-        flex-direction: column;
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-        }
+  }
+  &__text {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+  }
+  &__left {
+    width: 50%;
+    padding-right: 2rem;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      width: 50%;
+      padding-right: 1rem;
     }
-    &__search{
-        background-image: url("../../assets/Icons/search-24px.svg");
-        background-repeat: no-repeat;
-        background-position: right 1rem center;  
-        background-position-y: center;    
-        padding-left: 1rem;
-        border: solid 1px $divider;
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        margin-bottom: 1rem;
-        &:focus {
-            outline: 1px solid $interactive-elements;
-        }        
-        &::placeholder {
-            @include body-medium-mobile;
-            color: $table-colum-ph;
-            @include tablet {
-                @include body-medium-tablet;
-            }
-        }
-        @include tablet {
-            height: 2.375rem;
-            margin-bottom: 0;
-            margin-right: 1rem;            
-        }
+  }
+  &__right {
+    width: 50%;
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      width: 50%;
     }
-    &__button{        
-        @include body-medium-mobile;
-        color: white;
-        border-radius: 1.25rem;
-        height: 2.25rem;
-        background-color: $interactive-elements;
-        border: none;
-        padding: 0.5rem;
-        @include tablet {
-            padding: 0 1rem;
-            height: 2.375rem;
-            @include body-medium-tablet
-        }
-        &:hover {
-            background-color: $bg-hover-header;
-        }
+  }
+  &__link {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "WAREHOUSE";
+      @include tablet {
+        display: none;
+      }
     }
-    &__text{
-        display: flex;
-        flex-direction: row;
-        width: 80%;
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
     }
-    &__left{
-        width: 50%;
-        padding-right: 2rem;
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            width: 50%;
-            padding-right: 1rem;
-        }
+  }
+  &__nameAndArrow {
+    display: flex;
+    flex-direction: row;
+  }
+  &__name {
+    @include body-medium-mobile;
+    font-weight: 600;
+    color: $interactive-elements;
+    &:hover {
+      text-decoration: underline;
     }
-    &__right{
-        width: 50%;
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            width: 50%;
-        }
+    @include tablet {
+      @include body-medium-tablet;
+      font-weight: 600;
     }
-    &__link{        
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 1rem;
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "WAREHOUSE";
-            @include tablet {
-                display: none;                
-            }
-        }
-        @include tablet {            
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-        }        
+  }
+  &__rightArrow {
+    height: 1.25rem;
+  }
+  &__address {
+    @include body-medium-mobile;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "ADDRESS";
+      @include tablet {
+        display: none;
+      }
     }
-    &__nameAndArrow{
-        display: flex;
-        flex-direction: row;        
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
+      @include body-medium-tablet;
     }
-    &__name{        
-        @include body-medium-mobile;
-        font-weight: 600;
-        color: $interactive-elements;
-        &:hover {
-            text-decoration: underline;
-        }
-        @include tablet {
-            @include body-medium-tablet;
-            font-weight: 600;
-        }
+  }
+  &__contact {
+    @include body-medium-mobile;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "CONTACT NAME";
+      @include tablet {
+        display: none;
+      }
     }
-    &__rightArrow{
-        height: 1.25rem;
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
+      @include body-medium-tablet;
     }
-    &__address{        
-        @include body-medium-mobile;
-        display: flex;
-        flex-direction: column;  
-        padding-bottom: 1rem;      
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "ADDRESS";
-            @include tablet {
-                display: none;                
-            }
-        }
-        @include tablet {            
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-            @include body-medium-tablet;
-        } 
+  }
+  &__contactinfo {
+    @include body-medium-mobile;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    &::before {
+      padding-bottom: 0.25rem;
+      @include h4-mobile;
+      color: $table-colum-ph;
+      content: "CONTACT INFORMATION";
+      @include tablet {
+        display: none;
+      }
     }
-    &__contact{        
-        @include body-medium-mobile;
-        display: flex;
-        flex-direction: column;  
-        padding-bottom: 1rem;      
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "CONTACT NAME";
-            @include tablet {
-                display: none;                             
-            }
-        }
-        @include tablet {            
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-            @include body-medium-tablet;
-        } 
+    @include tablet {
+      width: 50%;
+      justify-content: center;
+      padding-bottom: 0;
+      @include body-medium-tablet;
     }
-    &__contactinfo{        
-        @include body-medium-mobile;
-        display: flex;
-        flex-direction: column;  
-        padding-bottom: 1rem;      
-        &::before {
-            padding-bottom: 0.25rem;
-            @include h4-mobile;
-            color: $table-colum-ph;
-            content: "CONTACT INFORMATION";
-            @include tablet {
-                display: none;                
-            }
-        }
-        @include tablet {            
-            width: 50%;
-            justify-content: center;
-            padding-bottom: 0;
-            @include body-medium-tablet;
-        } 
+  }
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    @include tablet {
+      width: 20%;
+      height: 1.5rem;
+      justify-content: flex-end;
     }
-    &__icons{
-        display: flex;
-        justify-content: space-between;
-        @include tablet {            
-            width: 20%;
-            height: 1.5rem;
-            justify-content: flex-end;            
-        } 
-    }
-    &__deleteicon{
-        margin-right: 1rem;
-    }
-    &__editicon{
-
-    }
+  }
+  &__deleteicon {
+    margin-right: 1rem;
+  }
+  &__editicon {
+  }
 }
