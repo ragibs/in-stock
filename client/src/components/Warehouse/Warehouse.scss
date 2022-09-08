@@ -61,6 +61,12 @@
             margin-bottom: 0;
             margin-right: 1rem;            
         }
+        @include desktop {
+            height: 2.375rem;
+            margin-bottom: 0;
+            margin-right: 1rem; 
+            width: 25rem;           
+        }
     }
     &__button{        
         @include body-medium-mobile;
@@ -79,10 +85,50 @@
             background-color: $bg-hover-header;
         }
     }
+    &__categories{
+        display: none;
+        @include tablet {
+            background-color: $bg-page;
+            height: 2.5rem;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: row;  
+            align-items: center;                       
+        }
+    }
+    &__categoryAndArrow{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 20%;
+        @include desktop {
+            width: 22.5%;
+        }         
+    }
+    &__category{
+        @include h4-tablet;
+        color: $table-colum-ph;
+        &--right{
+            text-align: right;            
+            @include h4-tablet;
+            width: 20%;
+            color: $table-colum-ph; 
+            @include desktop {
+                width: 10%;
+            }           
+        }               
+    }
+    &__sortArrow{
+        padding-left: 0.25rem;
+        height: 1rem;
+    }
     &__text{
         display: flex;
         flex-direction: row;
         width: 80%;
+        @include desktop{
+            width: 90%;
+        }
     }
     &__left{
         width: 50%;
@@ -91,7 +137,7 @@
             display: flex;
             flex-direction: row;
             width: 50%;
-            padding-right: 1rem;
+            padding-right: 0;
         }
     }
     &__right{
@@ -158,6 +204,7 @@
             width: 50%;
             justify-content: center;
             padding-bottom: 0;
+            padding-right: 1rem;
             @include body-medium-tablet;
         } 
     }
@@ -210,7 +257,12 @@
             width: 20%;
             height: 1.5rem;
             justify-content: flex-end;            
-        } 
+        }
+        @include desktop {
+            width: 10%;
+            height: 1.5rem;
+            justify-content: flex-end;  
+        }  
     }
     &__deleteicon{
         margin-right: 1rem;
