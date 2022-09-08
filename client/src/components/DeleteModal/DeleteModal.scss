@@ -1,0 +1,87 @@
+@use "../../styles/global.scss" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+.deleteModal {
+  &-bg {
+    background-color: rgba(189, 197, 213, 0.75);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  &__top-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-container {
+    width: 500px;
+    height: 500px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    justify-content: space-between;
+    @include tablet {
+      height: 300px;
+    }
+  }
+  &__title {
+    display: inline-block;
+    text-align: center;
+    margin-top: 10px;
+    text-align: start;
+    margin-bottom: 30px;
+  }
+  &__close-btn {
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  &__btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 45px;
+    border-radius: 20px;
+    @include h3-mobile;
+    border: none;
+    @include tablet {
+      @include h3-tablet;
+    }
+    &:hover {
+      background-color: $primary-text-color;
+      color: $white-global;
+      cursor: pointer;
+    }
+    &-cancel {
+      background-color: $white-global;
+      border: 1px solid $divider;
+      color: $primary-text-color;
+    }
+    &-delete {
+      background-color: $out-stock-error;
+      color: $white-global;
+    }
+  }
+}
