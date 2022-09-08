@@ -26,18 +26,20 @@ const writeFile = (data, filename) => {
 
 //Routes
 router.get("/", function (req, res) {
-    const inventories = readFile("inventories");
-    res.json(inventories);
+  const inventories = readFile("inventories");
+  res.json(inventories);
 });
 
 //gets list of all of the inventory data based on warehouse ID
 router.get("/:id", (req, res) => {
   const inventoryData = JSON.parse(fs.readFileSync(`./data/inventories.json`));
-  let inventory = inventoryData.filter((inventory) => inventory.warehouseID === req.params.id);
+  let inventory = inventoryData.filter(
+    (inventory) => inventory.warehouseID === req.params.id
+  );
   if (inventory) {
-      res.json(inventory);
+    res.json(inventory);
   } else {
-      res.status(404).send(" requested inventory not found");
+    res.status(404).send(" requested inventory not found");
   }
 });
 
@@ -88,4 +90,3 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router;
-
