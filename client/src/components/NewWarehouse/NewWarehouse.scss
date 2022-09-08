@@ -8,6 +8,17 @@
 
 .new-warehouse {
   padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  margin: -4rem 1rem 3rem 1rem;
+  background-color: $white-global;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 0.25rem;
+  @include tablet {
+    margin: -6.6rem 2rem 0 2rem;
+  }
+  &__form {
+    padding-bottom: 2rem;
+  }
   &__form-container {
     display: flex;
     flex-direction: column;
