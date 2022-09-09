@@ -1,5 +1,5 @@
 import "./Inventory.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
@@ -31,7 +31,9 @@ function Inventory(props) {
             className="inventory__search"
             placeholder="Search..."
           ></input>
-          <button className="inventory__button">+ Add New Item</button>
+          <NavLink to="/inventories/new" className="inventory__button">
+            + Add New Item
+          </NavLink>
         </div>
       </div>
       <div className="inventory__categories">

@@ -35,7 +35,9 @@ function Warehouse(props) {
               className="warehouse__search"
               placeholder="Search..."
             ></input>
-            <button className="warehouse__button">+ Add New Warehouse</button>
+            <NavLink to="/warehouses/new" className="warehouse__button">
+              + Add New Warehouse
+            </NavLink>
           </div>
         </div>
 
