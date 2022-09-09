@@ -95,7 +95,7 @@ router.post("/new", (req, res) => {
   }
 });
 
-//router delete
+//router delete warehouse
 router.delete("/:id", (req, res) => {
   let warehouseID = warehouseData.find(
     (warehouse) => warehouse.id === req.params.id

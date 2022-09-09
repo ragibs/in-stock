@@ -26,8 +26,10 @@ function DeleteModal({ setDeleteModal, deleteWarehouse }) {
               Delete {deleteWarehouse[0]} warehouse?
             </h1>
             <p className="deleteModal__text">
-              Please confirm that you’d like to delete the Washington from the
-              list of warehouses. You won’t be able to undo this action.
+              Please confirm that you’d like to delete the {deleteWarehouse[0]}
+              {"\u00a0"}
+              from the list of warehouses. You won’t be able to undo this
+              action.
             </p>
           </div>
         </div>

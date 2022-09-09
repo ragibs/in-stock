@@ -30,9 +30,11 @@ router.get("/", function (req, res) {
   res.json(inventories);
 });
 
+//json data
+const inventoryData = JSON.parse(fs.readFileSync(`./data/inventories.json`));
+
 //gets list of all of the inventory data based on warehouse ID
 router.get("/:id", (req, res) => {
-  const inventoryData = JSON.parse(fs.readFileSync(`./data/inventories.json`));
   let inventory = inventoryData.filter(
     (inventory) => inventory.warehouseID === req.params.id
   );
@@ -86,6 +88,21 @@ router.post("/", (req, res) => {
     }
   } catch (error) {
     res.status(400).json({ message: "Error creating new inventory item" });
+  }
+});
+
+//router delete inventory
+router.delete("/:id", (req, res) => {
+  let inventoryID = inventoryData.find(
+    (inventory) => inventory.id === req.params.id
+  );
+  if (inventoryID) {
+    let index = inventoryData.indexOf(inventoryID);
+    inventoryData.splice(index, 1);
+    fs.writeFileSync("./data/inventories.json", JSON.stringify(inventoryData));
+    res.json(inventoryData); //sendback updated json
+  } else {
+    res.status(404).send(" requested warehouse not found");
   }
 });
 
