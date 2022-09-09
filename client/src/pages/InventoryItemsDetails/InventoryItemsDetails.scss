@@ -2,7 +2,24 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
 
+
+.page-body {
+    background-color: white;
+    margin: -5rem 1rem 5rem;
+    border-radius: 5px;
+
+    @include tablet {
+        margin: -5.5rem 2rem 5.5rem;
+        padding: 1.5rem 1.5rem;
+    }
+
+    @include desktop {
+        max-width: $desktop-breakpoint;
+        margin: -5.5rem auto 5.5rem;
+    }
+}
 
 .inventory-header {
     padding-left: 1rem;
@@ -51,7 +68,6 @@
     padding-top: .5rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     @include tablet {
         flex-direction: row;

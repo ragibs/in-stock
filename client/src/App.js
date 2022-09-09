@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
-
+import InventoryItemsDetails from "./pages/InventoryItemsDetails/InventoryItemsDetails";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 
 
@@ -25,10 +25,9 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
 
           <Route path="/inventory" element={<InventoryPage />}></Route>
+          <Route path="/inventory/:id" element={<InventoryItemsDetails />}></Route>
 
           <Route path="/warehouses/:warehouseID" element={<WarehouseDetails />}></Route>
-          {/* <Route path="/inventory" element={<InventoryItemsDetails />}></Route> */}
-          {/* <Route path="/inventory" element={<Inventory />}></Route> */}
 
           <Route path="/new-warehouse" element={<NewWarehouse />}></Route>
 
