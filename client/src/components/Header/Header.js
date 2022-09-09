@@ -15,7 +15,7 @@ function Header() {
         <nav className="header__navigation">
           <ul className="header__menu">
             <li className="header__nav">
-              <NavLink to="/warehouses" className="header__nav-link">
+              <NavLink to="/" className="header__nav-link">
                 Warehouses
               </NavLink>
             </li>
