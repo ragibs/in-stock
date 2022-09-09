@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg"
 import editIcon from "../../assets/Icons/edit-24px.svg"
 import rightArrow from "../../assets/Icons/chevron_right-24px.svg"
+import EditWarehouse from '../../pages/EditWarehouse/EditWarehouse';
 
-function Warehouse(props) {     
+function Warehouse(props) { 
+
     return (   
         <>
         <div className="warehouse__top">
@@ -33,7 +35,7 @@ function Warehouse(props) {
                 </div>
                 <div className="warehouse__icons">
                     <img src={deleteIcon} className="warehouse__deleteicon"/>
-                    <img src={editIcon} className="warehouse__editicon"/>
+                    <Link to={`edit-warehouse/${thumb.id}`}><img src={editIcon} className="warehouse__editicon"/></Link>
                 </div>                
             </div>              
         )}
