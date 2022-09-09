@@ -31,9 +31,9 @@ function Inventory(props) {
             className="inventory__search"
             placeholder="Search..."
           ></input>
-          <NavLink to="/inventories/new" className="inventory__button">
+          <Link to="/inventory/new" className="inventory__button">
             + Add New Item
-          </NavLink>
+          </Link>
         </div>
       </div>
       <div className="inventory__categories">
