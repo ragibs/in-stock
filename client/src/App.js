@@ -6,23 +6,39 @@ import HomePage from "./pages/HomePage/HomePage";
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 
 
+import InventoryPage from "./pages/InventoryPage/InventoryPage";
+
+
+import WarehouseDetails from "./pages/Warehouse-details/WarehouseDetails";
+// import InventoryItemsDetails from "./pages/InventoryItemsDetails/InventoryItemsDetails";
+
+
+
+import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
+
 
 
 function App() {
   return (
-
     <div className="App">
       <BrowserRouter>
         <Header />
         <Routes>
-          {/* <Route path="/" element={<HomePage />}></Route> */}
-          {/* <Route path="/inventory" element={<Inventory />}></Route> */}
+          <Route path="/" element={<HomePage />}></Route>
+
+          <Route path="/inventory" element={<InventoryPage />}></Route>
+
+          <Route path="/warehouses/:warehouseID" element={<WarehouseDetails />}></Route>
           <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse/>}/>
+          {/* <Route path="/inventory" element={<InventoryItemsDetails />}></Route> */}
+          {/* <Route path="/inventory" element={<Inventory />}></Route> */}
+        
+          <Route path="/new-warehouse" element={<NewWarehouse />}></Route>
+
         </Routes>
         <Footer />
       </BrowserRouter>
     </div>
-
   );
 }
 
