@@ -91,7 +91,7 @@ function WarehouseDetails() {
             <div className="Inventory__items-container">
               <div className="Inventory__items-name">
                 <li className="Inventory__items-title">INVENTORY ITEM</li>
-                <li ><Link className="Inventory__items-item" to={`/inventories/${inventory.id}`}>{inventory.itemName} <img className="Inventory__items-chevron" src={rightChevron} alt="" /> </Link></li>
+                <li ><Link className="Inventory__items-item" to={`/inventory/${inventory.id}`}>{inventory.itemName} <img className="Inventory__items-chevron" src={rightChevron} alt="" /> </Link></li>
               </div>
               <div className="Inventory__items-category">
                 <li className="Inventory__items-title">CATEGORY</li>
