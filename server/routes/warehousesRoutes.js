@@ -3,8 +3,9 @@ const app = express();
 const fs = require("fs");
 const cors = require("cors");
 app.use(cors());
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 app.use(express.json());
+
 const { v4: uuidv4 } = require("uuid");
 
 const readFile = (fileName) => {
@@ -24,6 +25,7 @@ const writeFile = (data, filename) => {
   return data;
 };
 
+const warehouseData = JSON.parse(fs.readFileSync(`./data/warehouses.json`));
 router.get("/", function (req, res) {
   const warehouses = readFile("warehouses");
   res.json(warehouses);
@@ -90,6 +92,21 @@ router.post("/new", (req, res) => {
     return res
       .status(400)
       .json({ message: "Error: Failed to create warehouse" });
+  }
+});
+
+//router delete warehouse
+router.delete("/:id", (req, res) => {
+  let warehouseID = warehouseData.find(
+    (warehouse) => warehouse.id === req.params.id
+  );
+  if (warehouseID) {
+    let index = warehouseData.indexOf(warehouseID);
+    warehouseData.splice(index, 1);
+    fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouseData));
+    res.json(warehouseData); //sendback updated json
+  } else {
+    res.status(404).send(" requested warehouse not found");
   }
 });
 

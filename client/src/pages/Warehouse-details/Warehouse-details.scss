@@ -1,0 +1,296 @@
+@use "../../styles/global.scss" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+
+.page-body {
+    background-color: white;
+    margin: -5rem 1rem 5rem;
+    border-radius: 5px;
+
+    @include tablet {
+        margin: -5.5rem 2rem 5.5rem;
+    }
+
+    @include desktop {
+        max-width: $desktop-breakpoint;
+        margin: -5.5rem auto 5.5rem;
+    }
+}
+
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $divider;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    @include tablet {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+
+    &__title {
+        display: flex;
+        flex-direction: row;
+        @include h1-mobile;
+
+    }
+
+    &__edit-button {
+        background-color: $interactive-elements;
+        color: $white-global;
+        border-radius: 25px;
+        width: 5rem;
+        height: 2.5rem;
+        text-align: center;
+        display: none;
+        justify-content: center;
+        border: none;
+
+        &:hover {
+            background-color: $bg-hover-header;
+        }
+
+        @include tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__edit-button__mobile {
+        background-color: $interactive-elements;
+        color: $white-global;
+        border-radius: 25px;
+        width: 2.5rem;
+        height: 2.5rem;
+        text-align: center;
+        justify-content: center;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__edit-icon {
+        filter: brightness(0) invert(1);
+    }
+}
+
+.warehouse-details {
+    border-bottom: 1px solid $divider;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    @include tablet {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+    }
+
+    &__title {
+        @include h4-mobile;
+        color: $table-colum-ph;
+    }
+
+    &__info {
+        margin: 0;
+        @include body-medium-mobile
+    }
+
+    &__contact {
+        padding-left: 1.5rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        @include tablet {
+            border-left: 1px solid $divider;
+            padding-left: 2.5rem;
+            width: 50vw;
+        }
+    }
+}
+
+.Inventory {
+
+    &__statusTagGreen {
+        text-transform: uppercase;
+        width: fit-content;
+        color: $in-stock;
+        background-color: rgba(21, 132, 99, 0.07);
+        padding: 0 0.5rem;
+        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+
+        @include tablet {
+            @include h4-tablet;
+        }
+    }
+
+    &__statusTagRed {
+        text-transform: uppercase;
+        width: fit-content;
+        color: $out-stock-error;
+        background-color: rgba(201, 69, 21, 0.07);
+        padding: 0 0.5rem;
+        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+
+        @include tablet {
+            @include h4-tablet;
+        }
+    }
+
+    &__header {
+        display: none;
+        list-style: none;
+
+        @include tablet {
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: $table-colum-ph;
+            background-color: $bg-page;
+            @include h4-tablet;
+
+        }
+
+        &-gp1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &-gp2 {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+
+
+    &__item-title {
+        @include tablet {
+            width: 15%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    &__items {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        border-bottom: 1px solid $divider;
+
+        @include tablet {
+            justify-content: space-around;
+            flex-wrap: nowrap;
+
+        }
+
+        &:hover {
+            background-color: $bg-page;
+        }
+
+        &-category {
+            @include tablet {
+                width: 20vw;
+            }
+        }
+
+        &-category-details {
+            align-self: flex-start;
+        }
+
+        &-chevron {
+            align-items: center
+        }
+
+        &-title {
+            @include h4-mobile;
+
+            @include tablet {
+                display: none;
+            }
+        }
+
+
+        &-name {
+            margin-bottom: 1rem;
+        }
+
+        &-status {
+            margin-bottom: 1rem;
+
+            @include tablet {
+                width: 20vw;
+            }
+        }
+
+        &-quantity {
+            @include tablet {
+                width: 20vw;
+            }
+        }
+
+        &-item {
+            display: flex;
+            align-items: center;
+            color: $interactive-elements;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            @include tablet {
+                width: 20vw;
+            }
+
+
+        }
+
+        &-actions {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            width: 100vw;
+
+            @include tablet {
+                width: 20vw;
+                justify-content: flex-start;
+                padding: .5rem;
+            }
+
+
+        }
+
+        &-container {
+            @include tablet {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+    }
+}
