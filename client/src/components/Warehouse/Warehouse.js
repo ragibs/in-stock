@@ -1,5 +1,5 @@
 import "./Warehouse.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
@@ -26,9 +26,11 @@ function Warehouse({ warehousesData }) {
             className="warehouse__search"
             placeholder="Search..."
           ></input>
-          <button className="warehouse__button">+ Add New Warehouse</button>
+          <NavLink to="/new-warehouse" className="warehouse__button">
+            + Add New Warehouse
+          </NavLink>
         </div>
-      </div>{" "}
+      </div>
       {deleteModal && (
         <DeleteModal
           setDeleteModal={setDeleteModal}
