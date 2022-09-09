@@ -45,6 +45,21 @@ router.get("/:id", (req, res) => {
   }
 });
 
+
+//gets item details from inventory json
+
+router.get("/item/:id", (req, res) => {
+  let item = inventoryData.find(
+    (inventory) => inventory.id === req.params.id
+  );
+  if (item) {
+    res.json(item);
+  }
+  else {
+    res.status(404).send(" requested item not found");
+  }
+});
+
 // POST: Create new Inventory Item
 router.post("/", (req, res) => {
   const {
@@ -60,12 +75,12 @@ router.post("/", (req, res) => {
   try {
     if (
       (warehouseID !== "",
-      warehouseName !== "",
-      itemName !== "",
-      description !== "",
-      category !== "",
-      status !== "",
-      quantity !== "")
+        warehouseName !== "",
+        itemName !== "",
+        description !== "",
+        category !== "",
+        status !== "",
+        quantity !== "")
     ) {
       const inventories = readFile("inventories");
       const newItem = {

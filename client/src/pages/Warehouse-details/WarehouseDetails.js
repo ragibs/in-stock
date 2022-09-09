@@ -43,11 +43,9 @@ function WarehouseDetails() {
   if ((currentWarehouse === null || currentWarehouse === undefined) || (currentInventory === null || currentInventory === undefined)) {
     return <h1>Loading...</h1>
   }
-  return <div>
+  return <div className="page-body">
     <header className="Header">
       <h1 className="Header__title"><Link to="/"><img src={backArrow} alt="arrow_back" /></Link>{currentWarehouse?.name}</h1>
-      {/* Populate this with details from the warehouses array */}
-      {/* need to find a way to change the icon to white */}
       <button className="Header__edit-button__mobile"><img className="Header__edit-icon" src={editButton} alt="edit" /></button>
       <button className="Header__edit-button"><img className="Header__edit-icon" src={editButton} alt="edit" />Edit</button>
 
@@ -76,11 +74,17 @@ function WarehouseDetails() {
 
     <section className="Inventory">
       <ul className="Inventory__header">
-        <li className="Inventory__item-title">INVENTORY ITEM <img src={sortButton} alt="sortButton" /></li>
-        <li className="Inventory__item-title">CATEGORY <img src={sortButton} alt="sortButton" /></li>
-        <li className="Inventory__item-title">STATUS <img src={sortButton} alt="sortButton" /></li>
-        <li className="Inventory__item-title">QTY <img src={sortButton} alt="sortButton" /></li>
-        <li className="Inventory__item-title">ACTIONS <img src={sortButton} alt="sortButton" /></li>
+        <div className="Inventory__header-gp1">
+          <li className="Inventory__item-title">INVENTORY ITEM <img src={sortButton} alt="sortButton" /></li>
+          <li className="Inventory__item-title">CATEGORY <img src={sortButton} alt="sortButton" /></li>
+        </div>
+        <div className="Inventory__header-gp2">
+          <li className="Inventory__item-title">STATUS <img src={sortButton} alt="sortButton" /></li>
+          <li className="Inventory__item-title">QTY <img src={sortButton} alt="sortButton" /></li>
+        </div>
+        <div className="Inventory__header-gp3">
+          <li className="Inventory__item-title">ACTIONS <img src={sortButton} alt="sortButton" /></li>
+        </div>
       </ul>
       {/* populate this with details from the inventories array */}
 
