@@ -85,7 +85,6 @@
         @include body-medium-tablet;
       }
     }
-
     @include tablet {
       height: 2.375rem;
       margin-bottom: 0;
@@ -109,13 +108,12 @@
     background-color: $interactive-elements;
     border: none;
     padding: 0.5rem;
-
+    text-align: center;
     @include tablet {
       padding: 0 1rem;
       height: 2.375rem;
       @include body-medium-tablet;
     }
-
     &:hover {
       background-color: $bg-hover-header;
     }
@@ -192,35 +190,29 @@
       width: 50%;
     }
   }
-
   &__link {
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
-
     &::before {
       padding-bottom: 0.25rem;
       @include h4-mobile;
       color: $table-colum-ph;
       content: "WAREHOUSE";
-
       @include tablet {
         display: none;
       }
     }
-
     @include tablet {
       width: 50%;
       justify-content: center;
       padding-bottom: 0;
     }
   }
-
   &__nameAndArrow {
     display: flex;
     flex-direction: row;
   }
-
   &__name {
     @include body-medium-mobile;
     font-weight: 600;
@@ -245,18 +237,15 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
-
     &::before {
       padding-bottom: 0.25rem;
       @include h4-mobile;
       color: $table-colum-ph;
       content: "ADDRESS";
-
       @include tablet {
         display: none;
       }
     }
-
     @include tablet {
       width: 50%;
       justify-content: center;
@@ -265,24 +254,20 @@
       @include body-medium-tablet;
     }
   }
-
   &__contact {
     @include body-medium-mobile;
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
-
     &::before {
       padding-bottom: 0.25rem;
       @include h4-mobile;
       color: $table-colum-ph;
       content: "CONTACT NAME";
-
       @include tablet {
         display: none;
       }
     }
-
     @include tablet {
       width: 50%;
       justify-content: center;
@@ -290,24 +275,20 @@
       @include body-medium-tablet;
     }
   }
-
   &__contactinfo {
     @include body-medium-mobile;
     display: flex;
     flex-direction: column;
     padding-bottom: 1rem;
-
     &::before {
       padding-bottom: 0.25rem;
       @include h4-mobile;
       color: $table-colum-ph;
       content: "CONTACT INFORMATION";
-
       @include tablet {
         display: none;
       }
     }
-
     @include tablet {
       width: 50%;
       justify-content: center;
