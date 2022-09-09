@@ -2,7 +2,22 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
 
+.page-body {
+    background-color: white;
+    margin: -5rem 1rem 5rem;
+    border-radius: 5px;
+
+    @include tablet {
+        margin: -5.5rem 2rem 5.5rem;
+    }
+
+    @include desktop {
+        max-width: $desktop-breakpoint;
+        margin: -5.5rem auto 5.5rem;
+    }
+}
 
 .Header {
     display: flex;
@@ -10,6 +25,8 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $divider;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     @include tablet {
         padding-right: 2rem;
@@ -152,7 +169,19 @@
             padding-left: 2rem;
             padding-right: 1.5rem;
         }
+
+        &-gp1 {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &-gp2 {
+            display: flex;
+            flex-direction: row;
+        }
     }
+
+
 
     &__item-title {
         @include tablet {
