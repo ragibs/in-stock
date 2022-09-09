@@ -74,19 +74,12 @@ function WarehouseDetails() {
 
     <section className="Inventory">
       <ul className="Inventory__header">
-        <div className="Inventory__header-gp1">
-          <li className="Inventory__item-title">INVENTORY ITEM <img src={sortButton} alt="sortButton" /></li>
-          <li className="Inventory__item-title">CATEGORY <img src={sortButton} alt="sortButton" /></li>
-        </div>
-        <div className="Inventory__header-gp2">
-          <li className="Inventory__item-title">STATUS <img src={sortButton} alt="sortButton" /></li>
-          <li className="Inventory__item-title">QTY <img src={sortButton} alt="sortButton" /></li>
-        </div>
-        <div className="Inventory__header-gp3">
-          <li className="Inventory__item-title">ACTIONS <img src={sortButton} alt="sortButton" /></li>
-        </div>
+        <li className="Inventory__item-title">INVENTORY ITEM <img src={sortButton} alt="sortButton" /></li>
+        <li className="Inventory__item-title">CATEGORY <img src={sortButton} alt="sortButton" /></li>
+        <li className="Inventory__item-title">STATUS <img src={sortButton} alt="sortButton" /></li>
+        <li className="Inventory__item-title">QTY <img src={sortButton} alt="sortButton" /></li>
+        <li className="Inventory__item-title">ACTIONS <img src={sortButton} alt="sortButton" /></li>
       </ul>
-      {/* populate this with details from the inventories array */}
 
       {currentInventory?.map((inventory) => {
         console.log(inventory.itemName)
