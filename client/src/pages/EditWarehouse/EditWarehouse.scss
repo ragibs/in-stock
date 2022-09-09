@@ -4,31 +4,18 @@
 @use "../../styles/partials/colors" as *;
 
 .edit-warehouse {
-    width: 80%;
-    height: 56.75rem;
+    height: 54rem;
     background-color: $white-global;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-radius: 0.187rem;
-    position: absolute;
-    left: 1rem;
-    right: 1rem;
-    top: 8rem;
-    bottom: 4rem;
+    margin: -4rem 1rem 2rem 1rem;
     @include tablet {
-        width: 80%;
-        height: 34.5rem;
-        left: 2rem;
-        right: 2rem;
-        top: 6.75rem;
-        bottom: 20rem;
+        height: 35rem;
+        margin: -5.8rem 2rem 2rem 2rem;
     }
     @include desktop {
-        width: 80%;
         height: 38.25rem;
-        left: 8.12rem;
-        right: 8.12rem;
-        top: 5.75rem;
-        bottom: 13.81rem;
+        
     }
     &__title-container {
         display: flex;
@@ -71,7 +58,7 @@
     }
     &__warehouse-container {
         border-bottom: 1px solid $divider;
-        height: 22.5rem;
+        height: 22rem;
         @include tablet {
             width: 50%;
             border-right: 1px solid $divider;
@@ -80,10 +67,10 @@
     }
     &__title {
         @include h2-mobile;
-        margin: 1rem 1rem 0 1rem;
+        margin: 1rem 0;
         @include tablet {
             @include h2-tablet;
-            margin-left: 2rem;
+            margin-top: -0.5rem;
         }
     }
     &__form {
@@ -92,6 +79,7 @@
         margin: 0 1rem;
         @include tablet {
             margin-left: 2rem;
+            margin-top: 1.5rem;
         }
     }
     &__form--name-label {
@@ -108,9 +96,12 @@
         border: 1px solid $divider;
         border-radius: 1.25rem;
         padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
         @include tablet {
             width: 18rem;
             padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
     }
     &__form--name::placeholder {
@@ -133,9 +124,12 @@
         border: 1px solid $divider;
         border-radius: 1.25rem;
         padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
         @include tablet {
             width: 18rem;
             padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
     }
     &__form--street::placeholder {
@@ -158,9 +152,12 @@
         border: 1px solid $divider;
         border-radius: 1.25rem;
         padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
         @include tablet {
             width: 18rem;
             padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
     }
     &__form--city::placeholder {
@@ -174,7 +171,7 @@
         margin-top: 1rem;
         margin-bottom: 0.25rem;
         @include tablet {
-            @include h3-tablet;
+            @include h3-tablet; 
         }
     }
     &__form--country {
@@ -186,6 +183,8 @@
         @include tablet {
             width: 18rem;
             padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
     }
     &__form--country::placeholder {
@@ -195,12 +194,12 @@
         }
     }
     &__contact-container {
-        height: 22.5rem;
+        height: 25.5rem;
         @include tablet {
             width: 50%;
-            position: absolute;
-            left: 22rem;
-            bottom: 6.2rem;
+            margin-left: 23rem;
+            margin-top: -22rem;
+            
         }
     }
     &__form--position-label {
@@ -209,6 +208,7 @@
         margin-bottom: 0.25rem;
         @include tablet {
             @include h3-tablet;
+           
         }
     }
     &__form--position {
@@ -217,9 +217,12 @@
         border: 1px solid $divider;
         border-radius: 1.25rem;
         padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
         @include tablet {
             width: 18rem;
             padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
     }
     &__form--position::placeholder {
@@ -242,9 +245,12 @@
         border: 1px solid $divider;
         border-radius: 1.25rem;
         padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
         @include tablet {
             width: 18rem;
             padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
     }
     &__form--number::placeholder {
@@ -270,6 +276,8 @@
         @include tablet {
             width: 18rem;
             padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
         }
     }
     &__form--email::placeholder {
@@ -286,7 +294,7 @@
         margin-left: -1rem;
         @include tablet {
             width: 44rem;
-            margin: 2rem 0 0 -24rem;
+            margin: 1.8rem 0 0 -25rem;
             
         }
     }
@@ -340,7 +348,19 @@
             @include h3-tablet;
             width: 4rem;
             padding-left: 0;
-            // margin-left: 30rem;
         }
+    }
+}
+
+input {
+    &:active, &:focus, &:hover {
+        outline: none;
+        border: 1px solid $interactive-elements;
+        text-decoration: underline;
+        text-decoration-color: $interactive-elements;
+        text-decoration-thickness: 2px;
+    }
+    &:invalid {
+        border: 1px solid $out-stock-error;
     }
 }
