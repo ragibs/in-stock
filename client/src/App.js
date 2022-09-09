@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
-
+import NewItem from "./components/NewItem/NewItem";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           {/* <Route path="/inventory" element={<Inventory />}></Route> */}
           <Route path="/new-warehouse" element={<NewWarehouse />}></Route>
+          <Route path="/new-item" element={<NewItem />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
