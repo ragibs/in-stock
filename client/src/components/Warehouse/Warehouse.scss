@@ -28,7 +28,7 @@
       margin: -5.5rem 2rem 5.5rem;
     }
     @include desktop {
-      max-width: $desktop-breakpoint;
+      max-width: $desktop-breakpoint;      
       margin: -5.5rem auto 5.5rem;
     }
   }
@@ -218,7 +218,11 @@
 
   &__nameAndArrow {
     display: flex;
+    align-items: center;
     flex-direction: row;
+    &:hover .warehouse__rightArrow{
+        transform: translate(4px);        
+    }
   }
 
   &__name {
@@ -238,6 +242,7 @@
 
   &__rightArrow {
     height: 1.25rem;
+    transition: transform 200ms;
   }
 
   &__address {
