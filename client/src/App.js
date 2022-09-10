@@ -21,17 +21,17 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
+        <div className="app__container">
         <Routes>
+          
           <Route path="/" element={<HomePage />}></Route>
-
           <Route path="/inventory" element={<InventoryPage />}></Route>
           <Route path="/inventory/:id" element={<InventoryItemsDetails />}></Route>
-
           <Route path="/warehouses/:warehouseID" element={<WarehouseDetails />}></Route>
-
           <Route path="/new-warehouse" element={<NewWarehouse />}></Route>
-
+          
         </Routes>
+        </div>
         <Footer />
       </BrowserRouter>
     </div>

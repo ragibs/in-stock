@@ -195,7 +195,11 @@
   }
   &__nameAndArrow {
     display: flex;
+    align-items: center;
     flex-direction: row;
+    &:hover .inventory__rightArrow{
+        transform: translate(4px);        
+    }
   }
   &__name {
     @include body-medium-mobile;
@@ -211,6 +215,7 @@
   }
   &__rightArrow {
     height: 1.25rem;
+    transition: transform 200ms;
   }
   &__address {
     @include body-medium-mobile;
