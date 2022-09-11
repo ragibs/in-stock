@@ -18,7 +18,7 @@ function Warehouse(props) {
   };
 
   return (
-    <div>
+    <>
       {/* if deleteModal is set to true, the modal will render */}
       <div className="warehouse__container">
         {deleteModal && (
@@ -98,7 +98,7 @@ function Warehouse(props) {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 export default Warehouse;
