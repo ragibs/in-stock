@@ -4,14 +4,17 @@
 @use "../../styles/partials/fonts" as *;
 
 .footer {
+  padding: 1rem 0;
   display: flex;
   justify-content: center;
-}
-
-.footer__text {
-  @include body-small-mobile;
-  color: $table-colum-ph; //changed color as per mock up
-  @include tablet {
+  background-color: $bg-page;
+  &__text{
+    @include body-small-mobile;
+    color: $table-colum-ph; //changed color as per mock up
+    @include tablet {
     @include body-small-tablet;
+    }
   }
 }
+
+

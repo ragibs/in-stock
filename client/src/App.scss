@@ -6,10 +6,15 @@
 
 .app{
     &__container{
-        // background-color: $bg-page;
+        width: 100%;
+        display: flex;        
+        background-color: $bg-page;
         // margin-bottom: -5.5rem;
         @include desktop {
             padding: 0 2rem;
         }        
     }
+//     &__container2{
+//         display: flex;        
+//     }
 }

@@ -19,14 +19,16 @@
   }
   &__container {
     background-color: white;
-    margin: -5rem 1rem 5rem;
+    margin: -5rem 1rem 2rem;
     border-radius: 5px;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);    
     @include tablet {
-      margin: -5.5rem 2rem 5.5rem;
+      margin: -5.5rem 2rem 3rem;
     }
     @include desktop {
-      max-width: $desktop-breakpoint;
-      margin: -5.5rem auto 5.5rem;
+      max-width: $desktop-breakpoint;      
+      margin: -5.5rem auto 3rem;
     }
   }
   &__top {
