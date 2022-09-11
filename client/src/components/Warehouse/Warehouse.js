@@ -1,5 +1,5 @@
 import "./Warehouse.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
@@ -18,7 +18,7 @@ function Warehouse(props) {
   };
 
   return (
-    <div>
+    <>
       {/* if deleteModal is set to true, the modal will render */}
       <div className="warehouse__container">
         {deleteModal && (
@@ -35,7 +35,9 @@ function Warehouse(props) {
               className="warehouse__search"
               placeholder="Search..."
             ></input>
-            <button className="warehouse__button">+ Add New Warehouse</button>
+            <Link to="/warehouses/new" className="warehouse__button">
+              + Add New Warehouse
+            </Link>
           </div>
         </div>
 
@@ -96,7 +98,7 @@ function Warehouse(props) {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 export default Warehouse;

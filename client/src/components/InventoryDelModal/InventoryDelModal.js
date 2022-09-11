@@ -26,12 +26,12 @@ function InventoryDelModal({ setDeleteInvModal, deleteInventory }) {
           </button>
           <div className="inventoryDelModal__text-container">
             <h1 className="inventoryDelModal__title">
-              Delete {deleteInventory[0]} warehouse?
+              Delete {deleteInventory[0]} inventory?
             </h1>
             <p className="inventoryDelModal__text">
               Please confirm that you’d like to delete the {deleteInventory[0]}
               {"\u00a0"}
-              from the list of warehouses. You won’t be able to undo this
+              from the list of inventories. You won’t be able to undo this
               action.
             </p>
           </div>
