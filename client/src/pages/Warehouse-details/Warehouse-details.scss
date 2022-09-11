@@ -173,11 +173,19 @@
         &-gp1 {
             display: flex;
             flex-direction: row;
+            width: 40%;
         }
 
         &-gp2 {
             display: flex;
             flex-direction: row;
+            width: 40%
+        }
+
+        &-gp3 {
+            display: flex;
+            flex-direction: row;
+            width: 20%;
         }
     }
 
@@ -185,7 +193,7 @@
 
     &__item-title {
         @include tablet {
-            width: 20vw;
+            width: 50%;
         }
     }
 
@@ -213,7 +221,7 @@
 
         &-category {
             @include tablet {
-                width: 20vw;
+                width: 50%;
             }
         }
 
@@ -236,19 +244,20 @@
 
         &-name {
             margin-bottom: 1rem;
+            width: 50%;
         }
 
         &-status {
             margin-bottom: 1rem;
 
             @include tablet {
-                width: 20vw;
+                width: 50%;
             }
         }
 
         &-quantity {
             @include tablet {
-                width: 20vw;
+                width: 50%;
             }
         }
 
@@ -276,7 +285,7 @@
             width: 100vw;
 
             @include tablet {
-                width: 20vw;
+                width: 20%;
                 justify-content: flex-start;
                 padding: .5rem;
             }
@@ -288,6 +297,7 @@
             @include tablet {
                 display: flex;
                 flex-direction: row;
+                width: 40%;
             }
         }
 

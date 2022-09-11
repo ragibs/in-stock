@@ -89,7 +89,6 @@ function WarehouseDetails() {
       {/* populate this with details from the inventories array */}
 
       {currentInventory?.map((inventory) => {
-        console.log(inventory.itemName)
         return <div className="Inventory__items-grouping">
           <ul className="Inventory__items">
             <div className="Inventory__items-container">
