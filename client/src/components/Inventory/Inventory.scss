@@ -19,14 +19,16 @@
   }
   &__container {
     background-color: white;
-    margin: -5rem 1rem 5rem;
+    margin: -5rem 1rem 2rem;
     border-radius: 5px;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);    
     @include tablet {
-      margin: -5.5rem 2rem 5.5rem;
+      margin: -5.5rem 2rem 3rem;
     }
     @include desktop {
-      max-width: $desktop-breakpoint;
-      margin: -5.5rem auto 5.5rem;
+      max-width: $desktop-breakpoint;      
+      margin: -5.5rem auto 3rem;
     }
   }
   &__top {
@@ -94,8 +96,9 @@
     background-color: $interactive-elements;
     border: none;
     padding: 0.5rem;
+    text-align: center;
     @include tablet {
-      padding: 0 1rem;
+      padding: 0.5 1rem;
       height: 2.375rem;
       @include body-medium-tablet;
     }
@@ -195,7 +198,11 @@
   }
   &__nameAndArrow {
     display: flex;
+    align-items: center;
     flex-direction: row;
+    &:hover .inventory__rightArrow{
+        transform: translate(4px);        
+    }
   }
   &__name {
     @include body-medium-mobile;
@@ -211,6 +218,7 @@
   }
   &__rightArrow {
     height: 1.25rem;
+    transition: transform 200ms;
   }
   &__address {
     @include body-medium-mobile;
