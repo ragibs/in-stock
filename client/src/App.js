@@ -23,27 +23,25 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Header />
-        <div className="app__container">
-          {/* <div className="app__container2"> */}
-            <Routes>
-              <Route path="/" element={<Navigate to="/warehouses" />}></Route>
-              <Route path="/warehouses" element={<HomePage />}></Route>
-              <Route path="/inventory" element={<InventoryPage />}></Route>
-              <Route
-                path="/inventory/:id"
-                element={<InventoryItemsDetails />}
-              ></Route>
+        <div className="app__container">          
+          <Routes>
+            <Route path="/" element={<Navigate to="/warehouses" />}></Route>
+            <Route path="/warehouses" element={<HomePage />}></Route>
+            <Route path="/inventory" element={<InventoryPage />}></Route>
+            <Route
+              path="/inventory/:id"
+              element={<InventoryItemsDetails />}
+            ></Route>
 
-              <Route path="/inventory/new" element={<NewItem />} />
+            <Route path="/inventory/new" element={<NewItem />} />
 
-              <Route
-                path="/warehouses/:warehouseID"
-                element={<WarehouseDetails />}
-              ></Route>
+            <Route
+              path="/warehouses/:warehouseID"
+              element={<WarehouseDetails />}
+            ></Route>
 
-              <Route path="/warehouses/new" element={<NewWarehouse />}></Route>
-            </Routes>
-          {/* </div> */}
+            <Route path="/warehouses/new" element={<NewWarehouse />}></Route>
+          </Routes>          
         </div>
         <Footer />
       </BrowserRouter>
