@@ -120,6 +120,12 @@
             width: 50vw;
         }
     }
+
+    &__address {
+        @include tablet {
+            padding-right: 3rem;
+        }
+    }
 }
 
 .Inventory {
