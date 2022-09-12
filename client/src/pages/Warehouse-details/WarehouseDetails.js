@@ -113,19 +113,19 @@ function WarehouseDetails() {
       <section className="Inventory">
         <ul className="Inventory__header">
           <li className="Inventory__item-title">
-            INVENTORY ITEM <img src={sortButton} alt="sortButton" />
+            INVENTORY ITEM <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            CATEGORY <img src={sortButton} alt="sortButton" />
+            CATEGORY <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            STATUS <img src={sortButton} alt="sortButton" />
+            STATUS <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            QTY <img src={sortButton} alt="sortButton" />
+            QTY <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            ACTIONS <img src={sortButton} alt="sortButton" />
+            ACTIONS <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
         </ul>
 

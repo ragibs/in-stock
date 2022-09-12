@@ -8,6 +8,7 @@
     background-color: white;
     margin: -5rem 1rem 5rem;
     border-radius: 5px;
+    padding: 0;
 
     @include tablet {
         margin: -5.5rem 2rem 5.5rem;
@@ -18,6 +19,7 @@
         margin: -5.5rem auto 5.5rem;
     }
 }
+
 
 .Header {
     display: flex;
@@ -130,6 +132,11 @@
 
 .Inventory {
 
+    &__sortButton {
+        padding-left: 0.25rem;
+        height: 1rem;
+    }
+
     &__statusTagGreen {
         text-transform: uppercase;
         width: fit-content;
@@ -163,6 +170,9 @@
     &__header {
         display: none;
         list-style: none;
+        padding: 0 1.5rem;
+        height: 2.5rem;
+        align-items: center;
 
         @include tablet {
             margin: 0;
@@ -203,10 +213,8 @@
     }
 
     &__items {
-        padding-right: 1.5rem;
-        padding-left: 1.5rem;
-        padding-top: .5rem;
-        padding-bottom: .5rem;
+        padding: 1.5rem;
+        align-items: center;
         list-style: none;
         display: flex;
         flex-direction: row;
