@@ -3,7 +3,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
 
-.deleteModal {
+.inventoryDelModal {
   &-bg {
     background-color: rgba(189, 197, 213, 0.75);
     position: fixed;
