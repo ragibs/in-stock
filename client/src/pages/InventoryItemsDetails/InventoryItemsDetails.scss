@@ -31,32 +31,45 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 
-    &__editButton-mobile {
+    &__edit-button {
         background-color: $interactive-elements;
-        border-radius: 50%;
+        color: $white-global;
+        border-radius: 25px;
+        width: 5rem;
+        height: 2.5rem;
+        text-align: center;
+        display: none;
+        justify-content: center;
+        border: none;
+
+        &:hover {
+            background-color: $bg-hover-header;
+        }
+
+        @include tablet {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+
+
+    &__edit-button__mobile {
+        background-color: $interactive-elements;
+        color: $white-global;
+        border-radius: 25px;
+        width: 2.5rem;
+        height: 2.5rem;
+        text-align: center;
+        justify-content: center;
 
         @include tablet {
             display: none;
         }
     }
-
-    &__editButton {
-        background-color: $interactive-elements;
-        border-radius: 50%;
-        display: none;
-        color: white;
-        align-items: center;
-
-        @include tablet {
-            display: flex;
-            width: 5rem;
-            border-radius: 25%;
-            justify-content: space-evenly;
-        }
-
-
-    }
 }
+
+
 
 .editButton-image {
     filter: brightness(0) invert(1)
