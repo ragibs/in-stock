@@ -110,31 +110,4 @@ router.delete("/:id", (req, res) => {
   }
 });
 
-//route to get warehouseId
-router.get("/:id", (req, res) => {
-  let warehouseID = warehouseData.find((warehouse) => warehouse.id === req.params.id);
-  if (warehouseID) {
-    res.json(warehouseID);
-  } else {
-    res.status(404).send(" requested warehouse not found");
-  }
-});
-  
-  
-//update a single warehouse
-router.put("/:id", (req, res) => {
-  let id = req.params.id;
-  let body = req.body;
-  let index = warehouseData.findIndex((warehouse) => warehouse.id === id);
-  if (index >= 0) {
-    let updatedWarehouse = { id: id, ...body };
-    warehouseData[index] = updatedWarehouse;
-    fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouseData));
-    res.send(updatedWarehouse);
-    console.log(updatedWarehouse);
-  } else {
-    res.status(404).send("Warehouse was not found");
-  }
-});
-
 module.exports = router;

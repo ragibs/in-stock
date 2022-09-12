@@ -6,7 +6,8 @@ import backArrowIcon from "../../assets/Icons/arrow_back-24px.svg";
 import error from "../../assets/Icons/error-24px.svg";
 
 function EditWarehouse () {
-    const [errorMessage, setErrorMessage] = useState("")
+    const [errorMessage, setErrorMessage] = useState("");
+
     const [warehouseDetails, setWarehouseDetails] = useState({
         warehouseName: "",
         street: "",
@@ -36,17 +37,10 @@ function EditWarehouse () {
             }
         });
     }, [warehouseURL]);
-    
-
-    // const handleChange = (event) => {
-    //     setWarehouseDetails({
-    //     ...warehouseDetails, 
-    //     [event.target.name]: event.target.value,
-    //     });
-    // }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
         const updatedWarehouse = {
             warehouseName: event.target.warehouseName.value, 
             street: event.target.street.value, 
