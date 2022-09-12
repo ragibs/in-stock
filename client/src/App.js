@@ -20,27 +20,29 @@ import NewItem from "./components/NewItem/NewItem";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Navigate to="/warehouses" />}></Route>
-          <Route path="/warehouses" element={<HomePage />}></Route>
-          <Route path="/inventory" element={<InventoryPage />}></Route>
-          <Route
-            path="/inventory/:id"
-            element={<InventoryItemsDetails />}
-          ></Route>
+        <div className="app__container">          
+          <Routes>
+            <Route path="/" element={<Navigate to="/warehouses" />}></Route>
+            <Route path="/warehouses" element={<HomePage />}></Route>
+            <Route path="/inventory" element={<InventoryPage />}></Route>
+            <Route
+              path="/inventory/:id"
+              element={<InventoryItemsDetails />}
+            ></Route>
 
-          <Route path="/inventory/new" element={<NewItem />} />
+            <Route path="/inventory/new" element={<NewItem />} />
 
-          <Route
-            path="/warehouses/:warehouseID"
-            element={<WarehouseDetails />}
-          ></Route>
+            <Route
+              path="/warehouses/:warehouseID"
+              element={<WarehouseDetails />}
+            ></Route>
 
-          <Route path="/warehouses/new" element={<NewWarehouse />}></Route>
-        </Routes>
+            <Route path="/warehouses/new" element={<NewWarehouse />}></Route>
+          </Routes>          
+        </div>
         <Footer />
       </BrowserRouter>
     </div>
