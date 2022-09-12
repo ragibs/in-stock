@@ -60,10 +60,10 @@ function Inventory(props) {
         <span className="inventory__category--right">ACTIONS</span>
       </div>
       {props.inventoriesData.map((thumb) => (
-        <div className="warehouse" key={thumb.id}>
+        <div className="inventory" key={thumb.id}>
           <div className="inventory__text">
             <div className="inventory__left">
-              <Link to={`/warehouses/${thumb.id}`} className="inventory__link">
+              <Link to={`/inventory/${thumb.id}`} className="inventory__link">
                 <div className="inventory__nameAndArrow">
                   <p className="inventory__name">{thumb.itemName}</p>
                   <img src={rightArrow} className="inventory__rightArrow" />
