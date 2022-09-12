@@ -27,8 +27,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
 
     &__edit-button {
         background-color: $interactive-elements;
@@ -48,6 +48,8 @@
         @include tablet {
             display: flex;
             align-items: center;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
         }
     }
 
