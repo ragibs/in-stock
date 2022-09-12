@@ -30,8 +30,8 @@ function InventoryItemsDetails() {
     return <div className="page-body">
         <header className="inventory-header">
             <h1 className="inventory-header__itemName"><Link to={`/warehouses/${currentItem.warehouseID}`}><img src={backArrow} alt="back" /></Link>{currentItem.itemName}</h1>
-            <button className="inventory-header__editButton-mobile"><img className="editButton-image" src={editButton} alt="editButton" /></button>
-            <button className="inventory-header__editButton"><img className="editButton-image" src={editButton} alt="editButton" />Edit</button>
+            <button className="inventory-header__edit-button__mobile"><img className="editButton-image" src={editButton} alt="editButton" /></button>
+            <button className="inventory-header__edit-button"><img className="editButton-image" src={editButton} alt="editButton" />Edit</button>
         </header>
         <section className="inventory-body">
             <div className="inventory-container-description-category">
