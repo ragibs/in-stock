@@ -4,7 +4,6 @@ import axios from "axios"
 import { Link, useParams } from "react-router-dom";
 import backArrowIcon from "../../assets/Icons/arrow_back-24px.svg";
 
-
 function EditWarehouse () {
 
     const [warehouseDetails, setWarehouseDetails] = useState({
@@ -12,26 +11,31 @@ function EditWarehouse () {
         street: "",
         city: "",
         country: "",
-        contactName: "",
-        position: "",
-        phone: "",
-        email: "",
+        contact : {
+                    name: "",
+                    position: "",
+                    phone: "",
+                    email: "",
+                }
     }); 
 
     const {warehouseId} = useParams();
+    console.log(warehouseId)
+
+    let warehouseURL = `http://localhost:8080/warehouses/${warehouseId}`;
 
     useEffect(() => {
 
-        axios.get(`http://localhost:8080/warehouses/${warehouseId}`).then(response => {
+        axios.get(warehouseURL).then(response => {
             if(response.data.status === 200) {
                 console.log(response.data); 
                 setWarehouseDetails(response.data);  
             }
         });
-    }, []);
+    }, [warehouseURL]);
     
 
-    const updatedWarehouse = (event) => {
+    const handleChange = (event) => {
         setWarehouseDetails({
         ...warehouseDetails, 
         [event.target.name]: event.target.value,
@@ -46,18 +50,23 @@ function EditWarehouse () {
             street: warehouseDetails.address, 
             city: warehouseDetails.city, 
             country: warehouseDetails.country, 
-            contactName: warehouseDetails.contact.name, 
-            position: warehouseDetails.contact.position, 
-            phone: warehouseDetails.contact.phone, 
-            email: warehouseDetails.contact.email
+            contact: {
+                        name: warehouseDetails.contact.name, 
+                        position: warehouseDetails.contact.position, 
+                        phone: warehouseDetails.contact.phone, 
+                        email: warehouseDetails.contact.email
+                    }
         };
 
-        axios.put(`http://localhost:8080/warehouses${warehouseId}`, updatedWarehouse)
+        axios.put(`http://localhost:8080/warehouses/${warehouseId}`, updatedWarehouse)
         .then(response => {
             console.log(response.data)
         })
         .catch(error => console.log(error));
     };
+    if ((warehouseDetails === null || warehouseDetails === undefined)) {
+        return <h1>Loading...</h1>
+      }
 
     return (
         <>
@@ -71,24 +80,24 @@ function EditWarehouse () {
                 <div className = "edit-warehouse__warehouse-container">
                     <h2 className = "edit-warehouse__title">Warehouse Details</h2>
                     <label htmlFor = "edit-warehouse__form---name" className = "edit-warehouse__form--name-label">Warehouse Name</label>
-                    <input type = "text" className = "edit-warehouse__form--name" placeholder = "Warehouse Name" value = {warehouseDetails.warehouseName}></input>
+                    <input type = "text" className = "edit-warehouse__form--name" placeholder = "Warehouse Name" defaultValue = {warehouseDetails.warehouseName} onChange = {handleChange}></input>
                     <label htmlFor = "edit-warehouse__form--street" className = "edit-warehouse__form--street-label">Street Address</label>
-                    <input type = "text" className = "edit-warehouse__form--street" placeholder = "Warehouse Street" value = {warehouseDetails.street}></input>
+                    <input type = "text" className = "edit-warehouse__form--street" placeholder = "Warehouse Street" defaultValue = {warehouseDetails.street} onChange = {handleChange}></input>
                     <label htmlFor = "edit-warehouse__form--city" className = "edit-warehouse__form--city-label">City</label>
-                    <input type = "text" className = "edit-warehouse__form--city" placeholder = "Warehouse City" value = {warehouseDetails.city}></input>
-                    <label htmlFor = "edit-warehouse__form--country" className = "edit-warehouse__form--country-label"value = {warehouseDetails.country}>Country</label>
-                    <input type = "text" className = "edit-warehouse__form--country" placeholder = "Warehouse Country" ></input>
+                    <input type = "text" className = "edit-warehouse__form--city" placeholder = "Warehouse City" defaultValue = {warehouseDetails.city} onChange = {handleChange}></input>
+                    <label htmlFor = "edit-warehouse__form--country" className = "edit-warehouse__form--country-label">Country</label>
+                    <input type = "text" className = "edit-warehouse__form--country" placeholder = "Warehouse Country" defaultValue = {warehouseDetails.country} onChange = {handleChange}></input>
                 </div>
                 <div className = "edit-warehouse__contact-container">
                     <h2 className = "edit-warehouse__title">Contact Details</h2>
                     <label htmlFor = "edit-warehouse__form--name" className = "edit-warehouse__form--name-label">Contact Name</label>
-                    <input type = "text" className = "edit-warehouse__form--name" placeholder = "Contact Name" value = {warehouseDetails.contact.name}></input>
+                    <input type = "text" className = "edit-warehouse__form--name" placeholder = "Contact Name" defaultValue = {warehouseDetails.contact.name} onChange = {handleChange}></input>
                     <label htmlFor = "edit-warehouse__form--position" className = "edit-warehouse__form--position-label">Position</label>
-                    <input type = "text" className = "edit-warehouse__form--position" placeholder = "Position" value = {warehouseDetails.contact.position}></input>
+                    <input type = "text" className = "edit-warehouse__form--position" placeholder = "Position" defaultValue = {warehouseDetails.contact.position} onChange = {handleChange}></input>
                     <label htmlFor = "edit-warehouse__form--number" className = "edit-warehouse__form--number-label">Phone Number</label>
-                    <input type = "text" className = "edit-warehouse__form--number" placeholder = "Phone number" value = {warehouseDetails.contact.phone}></input>
+                    <input type = "text" className = "edit-warehouse__form--number" placeholder = "Phone number" defaultValue = {warehouseDetails.contact.phone} onChange = {handleChange}></input>
                     <label htmlFor = "edit-warehouse__form--email" className = "edit-warehouse__form--email-label">Email</label>
-                    <input type = "text" className = "edit-warehouse__form--email" placeholder = "Email" value = {warehouseDetails.contact.email}></input>
+                    <input type = "text" className = "edit-warehouse__form--email" placeholder = "Email" defaultValue = {warehouseDetails.contact.email} onChange = {handleChange}></input>
                     <div className = "edit-warehouse__buttons-container">
                         <Link to="/"><button className = "edit-warehouse__cancel-button" type = "submit">Cancel</button></Link>
                         <button className = "edit-warehouse__save-button" type = "submit">Save</button>
