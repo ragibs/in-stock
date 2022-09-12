@@ -38,34 +38,35 @@ function EditWarehouse () {
     }, [warehouseURL]);
     
 
-    const handleChange = (event) => {
-        setWarehouseDetails({
-        ...warehouseDetails, 
-        [event.target.name]: event.target.value,
-        });
-    }
+    // const handleChange = (event) => {
+    //     setWarehouseDetails({
+    //     ...warehouseDetails, 
+    //     [event.target.name]: event.target.value,
+    //     });
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const updatedWarehouse = {
-            warehouseName: warehouseDetails.name, 
-            street: warehouseDetails.address, 
-            city: warehouseDetails.city, 
-            country: warehouseDetails.country, 
+            warehouseName: event.target.warehouseName.value, 
+            street: event.target.street.value, 
+            city: event.target.city.value, 
+            country: event.target.country.value, 
             contact: {
-                        name: warehouseDetails.contact.name, 
-                        position: warehouseDetails.contact.position, 
-                        phone: warehouseDetails.contact.phone, 
-                        email: warehouseDetails.contact.email
+                        name: event.target.name.value, 
+                        position: event.target.position.value, 
+                        phone: event.target.phone.value, 
+                        email: event.target.email.value
                     }
         };
-
+        
         axios.put(`http://localhost:8080/warehouses/${warehouseId}`, updatedWarehouse)
         .then(response => {
             console.log(response.data)
         })
         .catch(error => console.log(error));
     };
+
     if ((warehouseDetails === null || warehouseDetails === undefined)) {
         return <h1>Loading...</h1>
       }
@@ -82,7 +83,7 @@ function EditWarehouse () {
                 <div className = "edit-warehouse__warehouse-container">
                     <h2 className = "edit-warehouse__title">Warehouse Details</h2>
                     <label htmlFor = "edit-warehouse__form--warehouse-name" className = "edit-warehouse__form--warehouse-name-label">Warehouse Name</label>
-                    <input type = "text" className = "edit-warehouse__form--warehouse-name" placeholder = "Warehouse Name" defaultValue = {warehouseDetails.name} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--warehouse-name" placeholder = "Warehouse Name" name = "warehouseName" defaultValue = {warehouseDetails.name}></input>
                     {warehouseDetails.name === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
@@ -90,7 +91,7 @@ function EditWarehouse () {
                         </div>    
                     )}
                     <label htmlFor = "edit-warehouse__form--street" className = "edit-warehouse__form--street-label">Street Address</label>
-                    <input type = "text" className = "edit-warehouse__form--street" placeholder = "Warehouse Street" defaultValue = {warehouseDetails.address} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--street" placeholder = "Warehouse Street" name = "street" defaultValue = {warehouseDetails.address}></input>
                     {warehouseDetails.address === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
@@ -98,7 +99,7 @@ function EditWarehouse () {
                         </div>    
                     )}
                     <label htmlFor = "edit-warehouse__form--city" className = "edit-warehouse__form--city-label">City</label>
-                    <input type = "text" className = "edit-warehouse__form--city" placeholder = "Warehouse City" defaultValue = {warehouseDetails.city} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--city" placeholder = "Warehouse City" name = "city" defaultValue = {warehouseDetails.city}></input>
                     {warehouseDetails.city === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
@@ -106,7 +107,7 @@ function EditWarehouse () {
                         </div>    
                     )}
                     <label htmlFor = "edit-warehouse__form--country" className = "edit-warehouse__form--country-label">Country</label>
-                    <input type = "text" className = "edit-warehouse__form--country" placeholder = "Warehouse Country" defaultValue = {warehouseDetails.country} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--country" placeholder = "Warehouse Country" name = "country" defaultValue = {warehouseDetails.country}></input>
                     {warehouseDetails.country === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
@@ -117,7 +118,7 @@ function EditWarehouse () {
                 <div className = "edit-warehouse__contact-container">
                     <h2 className = "edit-warehouse__title">Contact Details</h2>
                     <label htmlFor = "edit-warehouse__form--contact-name" className = "edit-warehouse__form--contact-name-label">Contact Name</label>
-                    <input type = "text" className = "edit-warehouse__form--contact-name" placeholder = "Contact Name" defaultValue = {warehouseDetails.contact.name} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--contact-name" placeholder = "Contact Name" name = "name" defaultValue = {warehouseDetails.contact.name}></input>
                     {warehouseDetails.contact.name === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
@@ -125,7 +126,7 @@ function EditWarehouse () {
                         </div>    
                     )}
                     <label htmlFor = "edit-warehouse__form--position" className = "edit-warehouse__form--position-label">Position</label>
-                    <input type = "text" className = "edit-warehouse__form--position" placeholder = "Position" defaultValue = {warehouseDetails.contact.position} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--position" placeholder = "Position" name = "position" defaultValue = {warehouseDetails.contact.position}></input>
                     {warehouseDetails.contact.position === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
@@ -133,7 +134,7 @@ function EditWarehouse () {
                         </div>    
                     )}
                     <label htmlFor = "edit-warehouse__form--number" className = "edit-warehouse__form--number-label">Phone Number</label>
-                    <input type = "text" className = "edit-warehouse__form--number" placeholder = "Phone number" defaultValue = {warehouseDetails.contact.phone} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--number" placeholder = "Phone number" name = "phone" defaultValue = {warehouseDetails.contact.phone}></input>
                     {warehouseDetails.contact.phone === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
@@ -141,7 +142,7 @@ function EditWarehouse () {
                         </div>    
                     )}
                     <label htmlFor = "edit-warehouse__form--email" className = "edit-warehouse__form--email-label">Email</label>
-                    <input type = "text" className = "edit-warehouse__form--email" placeholder = "Email" defaultValue = {warehouseDetails.contact.email} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--email" placeholder = "Email" name = "email" defaultValue = {warehouseDetails.contact.email}></input>
                     {warehouseDetails.contact.email === "" && (
                         <div className = "edit-item__form--error-box">
                             <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
