@@ -3,11 +3,10 @@ const app = express();
 const fs = require("fs");
 const cors = require("cors");
 app.use(cors());
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 app.use(express.json());
+
 const { v4: uuidv4 } = require("uuid");
-
-
 
 const readFile = (fileName) => {
   const fileContent = JSON.parse(fs.readFileSync(`./data/${fileName}.json`));
@@ -25,6 +24,10 @@ const writeFile = (data, filename) => {
   );
   return data;
 };
+
+// warehouse and inventory data as json for api calls
+const warehouseData = JSON.parse(fs.readFileSync(`./data/warehouses.json`));
+const inventoryData = JSON.parse(fs.readFileSync(`./data/inventories.json`));
 
 router.get("/", function (req, res) {
   const warehouses = readFile("warehouses");
@@ -121,5 +124,30 @@ router.put("/:id", (req, res) => {
   }
 });
 
+
+//router delete warehouse
+router.delete("/:id", (req, res) => {
+  let warehouseID = warehouseData.find(
+    (warehouse) => warehouse.id === req.params.id
+  );
+  if (warehouseID) {
+    //delete inventories linked to warehouse
+    let remainingInventory = inventoryData.filter(
+      (data) => data.warehouseID != req.params.id
+    );
+
+    fs.writeFileSync(
+      "./data/inventories.json",
+      JSON.stringify(remainingInventory)
+    );
+    //Ddelete warehouse
+    let index = warehouseData.indexOf(warehouseID);
+    warehouseData.splice(index, 1);
+    fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouseData));
+    res.json(warehouseData); //sendback updated json
+  } else {
+    res.status(404).send(" requested warehouse not found");
+  }
+});
 
 module.exports = router;
