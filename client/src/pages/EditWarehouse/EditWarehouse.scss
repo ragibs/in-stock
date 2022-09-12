@@ -15,7 +15,7 @@
     }
     @include desktop {
         height: 38.25rem;
-        
+        margin: -5.8rem 5rem 2rem 5rem;
     }
     &__title-container {
         display: flex;
@@ -60,9 +60,12 @@
         border-bottom: 1px solid $divider;
         height: 22rem;
         @include tablet {
-            width: 50%;
+            width: 45%;
             border-right: 1px solid $divider;
-            border-bottom: hidden!important;
+            border-bottom: hidden!important;  
+        }
+        @include desktop {
+            
         }
     }
     &__title {
@@ -78,8 +81,15 @@
         flex-direction: column;
         margin: 0 1rem;
         @include tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
             margin-left: 2rem;
             margin-top: 1.5rem;
+        }
+        @include desktop {
+            margin-left: 2.5rem;
+            margin-right: 2.5rem;
         }
     }
     &__form--name-label {
@@ -103,6 +113,9 @@
             margin-right: 2rem;
             margin-bottom: 1rem;
         }
+        @include desktop {
+            width: 27rem;
+        }
     }
     &__form--name::placeholder {
         @include h4-mobile; 
@@ -115,7 +128,7 @@
         margin-top: 1rem;
         margin-bottom: 0.25rem;
         @include tablet {
-            @include h3-tablet;
+            @include h3-tablet;   
         }
     }
     &__form--street {
@@ -130,6 +143,9 @@
             padding-left: 0.75rem;
             margin-right: 2rem;
             margin-bottom: 1rem;
+        }
+        @include desktop {
+            width: 27rem;
         }
     }
     &__form--street::placeholder {
@@ -158,6 +174,9 @@
             padding-left: 0.75rem;
             margin-right: 2rem;
             margin-bottom: 1rem;
+        }
+        @include desktop {
+            width: 27rem;
         }
     }
     &__form--city::placeholder {
@@ -197,9 +216,7 @@
         height: 25.5rem;
         @include tablet {
             width: 50%;
-            margin-left: 23rem;
-            margin-top: -22rem;
-            
+            margin-left: 2rem;
         }
     }
     &__form--position-label {
@@ -223,6 +240,9 @@
             padding-left: 0.75rem;
             margin-right: 2rem;
             margin-bottom: 1rem;
+        }
+        @include desktop {
+            width: 27rem;
         }
     }
     &__form--position::placeholder {
@@ -252,6 +272,9 @@
             margin-right: 2rem;
             margin-bottom: 1rem;
         }
+        @include desktop {
+            width: 27rem;
+        }
     }
     &__form--number::placeholder {
         @include h4-mobile;
@@ -279,6 +302,9 @@
             margin-right: 2rem;
             margin-bottom: 1rem;
         }
+        @include desktop {
+            width: 27rem;
+        }
     }
     &__form--email::placeholder {
         @include h4-mobile;
@@ -294,8 +320,10 @@
         margin-left: -1rem;
         @include tablet {
             width: 44rem;
-            margin: 1.8rem 0 0 -25rem;
-            
+            margin: 1.7rem 0 0 -23.77rem;   
+        }
+        @include desktop {
+            width: 50rem;
         }
     }
     &__cancel-button {
