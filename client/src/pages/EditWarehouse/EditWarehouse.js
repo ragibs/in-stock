@@ -27,7 +27,9 @@ function EditWarehouse () {
     useEffect(() => {
 
         axios.get(warehouseURL).then(response => {
-            if(response.data.status === 200) {
+            console.log(response)
+            if(response.status === 200) {
+            
                 console.log(response.data); 
                 setWarehouseDetails(response.data);  
             }
