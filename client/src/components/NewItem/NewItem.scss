@@ -4,22 +4,24 @@
 @use "../../styles/partials/fonts" as *;
 @use "../../styles/partials/variables" as *;
 
-/* --- New Warehouse --- */
+/* --- New Item --- */
 
-.new-warehouse {
+.new-item {
   width: 100%;
   padding-bottom: 1rem;
-  margin-bottom: 3rem;
   margin: -5rem 1rem 3rem 1rem;
   background-color: $white-global;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
   border-radius: 0.25rem;
   @include tablet {
-    margin: -6.6rem 2rem 0 2rem;
+    margin: -6.6rem 2rem 3rem 2rem;
   }
   @include desktop {
     max-width: $desktop-breakpoint;
     margin: -6.6rem auto 3rem auto;
+  }
+  &__form {
+    padding-bottom: 2rem;
   }
   &__form-container {
     display: flex;
@@ -50,12 +52,12 @@
     margin-top: 2rem;
     padding: 0 2rem 0 2rem;
     width: 100%;
-    &--warehouse {
+    &--details {
       @include tablet {
         border-right: 2px solid $divider;
       }
     }
-    &--contact {
+    &--availability {
       border-top: 2px solid $divider;
       padding-top: 2rem;
       margin: 0;
@@ -88,6 +90,68 @@
     &--error {
       border-color: $out-stock-error;
     }
+  }
+  &__form-textarea {
+    line-height: 2.25rem;
+    border-radius: 1.25rem;
+    padding: 0 1rem;
+    border: 1px solid $divider;
+    margin-top: 0.2rem;
+    height: 10rem;
+    resize: none;
+    font-family: "Titillium Web";
+    &::placeholder {
+      color: $table-colum-ph;
+    }
+    &:focus {
+      border: 1px solid $interactive-elements;
+      outline: none;
+    }
+    &--error {
+      border-color: $out-stock-error;
+    }
+  }
+  &__form-select {
+    line-height: 2.25rem;
+    border-radius: 1.25rem;
+    padding: 0 1rem;
+    border: 1px solid $divider;
+    margin-top: 0.2rem;
+    height: 2.25rem;
+    resize: none;
+    font-family: "Titillium Web";
+    appearance: none;
+    &::placeholder {
+      color: $table-colum-ph;
+    }
+    &:focus {
+      border: 1px solid $interactive-elements;
+      outline: none;
+    }
+    &--error {
+      border-color: $out-stock-error;
+    }
+  }
+  &__radio-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.25rem;
+    color: $table-colum-ph;
+  }
+  &__radio {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin-right: 0.5rem;
+  }
+  &__radio-box {
+    display: flex;
+    align-items: center;
+  }
+  &__selected {
+    color: black;
+  }
+  &__error {
+    color: $out-stock-error;
   }
   &__form-error {
     color: $out-stock-error;

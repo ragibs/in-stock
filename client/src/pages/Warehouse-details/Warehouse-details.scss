@@ -2,6 +2,24 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+
+.page-body {
+    background-color: white;
+    margin: -5rem 1rem 2rem;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+    @include tablet {
+        margin: -5.5rem 2rem 3rem;
+    }
+
+    @include desktop {
+        max-width: $desktop-breakpoint;
+        margin: -5.5rem auto 3rem;
+    }
+}
 
 
 .Header {
@@ -10,6 +28,10 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $divider;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     @include tablet {
         padding-right: 2rem;
@@ -20,6 +42,10 @@
         display: flex;
         flex-direction: row;
         @include h1-mobile;
+
+        @include tablet {
+            @include h1-tablet;
+        }
 
     }
 
@@ -41,6 +67,7 @@
         @include tablet {
             display: flex;
             align-items: center;
+            height: 2.375rem;
         }
     }
 
@@ -52,6 +79,8 @@
         height: 2.5rem;
         text-align: center;
         justify-content: center;
+        border: none;
+        height: 2.25rem;
 
         @include tablet {
             display: none;
@@ -59,8 +88,13 @@
     }
 
     &__edit-icon {
+        margin-right: 0.25rem;
         filter: brightness(0) invert(1);
     }
+}
+
+.back-arrow {
+    padding-right: .5rem;
 }
 
 .warehouse-details {
@@ -85,86 +119,136 @@
 
     &__info {
         margin: 0;
-        @include body-medium-mobile
+        @include body-medium-mobile;
+
+        @include tablet {
+            width: 50%;
+        }
     }
 
     &__contact {
+        width: 50%;
         padding-left: 1.5rem;
     }
 
     &__container {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        padding-top: 2rem;
 
         @include tablet {
+            padding-top: 0;
             border-left: 1px solid $divider;
             padding-left: 2.5rem;
             width: 50vw;
         }
     }
+
+    &__address {
+        @include tablet {
+            padding-right: 3rem;
+        }
+    }
+
+    &__name {
+        width: 50%;
+    }
 }
 
 .Inventory {
 
+    &__sortButton {
+        padding-left: 0.25rem;
+        height: 1rem;
+    }
+
     &__statusTagGreen {
         text-transform: uppercase;
         width: fit-content;
-        color: $in-stock;
         background-color: rgba(21, 132, 99, 0.07);
         padding: 0 0.5rem;
         border-radius: 1.25rem;
         display: flex;
         align-items: center;
+        @include h4-mobile;
+        color: $in-stock;
 
         @include tablet {
             @include h4-tablet;
+            color: $in-stock;
+
         }
     }
 
     &__statusTagRed {
         text-transform: uppercase;
         width: fit-content;
-        color: $out-stock-error;
         background-color: rgba(201, 69, 21, 0.07);
         padding: 0 0.5rem;
         border-radius: 1.25rem;
         display: flex;
         align-items: center;
+        @include h4-mobile;
+        color: $out-stock-error;
+
 
         @include tablet {
             @include h4-tablet;
+            color: $out-stock-error;
+
         }
     }
 
     &__header {
         display: none;
         list-style: none;
+        padding: 0 1.5rem;
+        height: 2.5rem;
+        align-items: center;
 
         @include tablet {
             margin: 0;
             display: flex;
             flex-direction: row;
-            justify-content: flex-start;
+            justify-content: space-between;
             color: $table-colum-ph;
             background-color: $bg-page;
             @include h4-tablet;
-            padding-left: 2rem;
-            padding-right: 1.5rem;
+
+        }
+
+        &-gp1 {
+            display: flex;
+            flex-direction: row;
+            width: 40%;
+        }
+
+        &-gp2 {
+            display: flex;
+            flex-direction: row;
+            width: 40%
+        }
+
+        &-gp3 {
+            display: flex;
+            flex-direction: row;
+            width: 20%;
         }
     }
 
+
+
     &__item-title {
         @include tablet {
-            width: 20vw;
+            width: 50%;
+            display: flex;
+            align-items: center;
         }
     }
 
     &__items {
-        padding-right: 1.5rem;
-        padding-left: 1.5rem;
-        padding-top: .5rem;
-        padding-bottom: .5rem;
+        padding: 1.5rem;
+        align-items: center;
         list-style: none;
         display: flex;
         flex-direction: row;
@@ -184,12 +268,17 @@
 
         &-category {
             @include tablet {
-                width: 20vw;
+                width: 50%;
             }
         }
 
         &-category-details {
             align-self: flex-start;
+            @include body-medium-mobile;
+
+            @include tablet {
+                @include body-medium-tablet
+            }
         }
 
         &-chevron {
@@ -204,28 +293,38 @@
             }
         }
 
+        &-quantity-details {
+            @include body-medium-mobile;
+
+            @include tablet {
+                @include body-medium-tablet;
+            }
+        }
 
         &-name {
             margin-bottom: 1rem;
+            width: 50%;
         }
 
         &-status {
             margin-bottom: 1rem;
 
             @include tablet {
-                width: 20vw;
+                width: 50%;
             }
         }
 
         &-quantity {
             @include tablet {
-                width: 20vw;
+                width: 50%;
             }
         }
 
         &-item {
             display: flex;
             align-items: center;
+
+            @include body-medium-mobile;
             color: $interactive-elements;
 
             &:hover {
@@ -234,6 +333,7 @@
 
             @include tablet {
                 width: 20vw;
+                @include body-medium-tablet
             }
 
 
@@ -242,12 +342,10 @@
         &-actions {
             display: flex;
             justify-content: space-between;
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-            width: 100vw;
+            width: 100%;
 
             @include tablet {
-                width: 20vw;
+                width: 20%;
                 justify-content: flex-start;
                 padding: .5rem;
             }
@@ -259,8 +357,15 @@
             @include tablet {
                 display: flex;
                 flex-direction: row;
+                width: 40%;
             }
         }
 
+    }
+}
+
+.trashCan {
+    @include tablet {
+        padding-right: .5rem;
     }
 }

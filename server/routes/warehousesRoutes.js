@@ -25,7 +25,10 @@ const writeFile = (data, filename) => {
   return data;
 };
 
+// warehouse and inventory data as json for api calls
 const warehouseData = JSON.parse(fs.readFileSync(`./data/warehouses.json`));
+const inventoryData = JSON.parse(fs.readFileSync(`./data/inventories.json`));
+
 router.get("/", function (req, res) {
   const warehouses = readFile("warehouses");
   res.json(warehouses);
@@ -101,6 +104,16 @@ router.delete("/:id", (req, res) => {
     (warehouse) => warehouse.id === req.params.id
   );
   if (warehouseID) {
+    //delete inventories linked to warehouse
+    let remainingInventory = inventoryData.filter(
+      (data) => data.warehouseID != req.params.id
+    );
+
+    fs.writeFileSync(
+      "./data/inventories.json",
+      JSON.stringify(remainingInventory)
+    );
+    //Ddelete warehouse
     let index = warehouseData.indexOf(warehouseID);
     warehouseData.splice(index, 1);
     fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouseData));
