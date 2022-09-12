@@ -18,11 +18,11 @@ function EditInventoryItem () {
         quantity: 0,
     }); 
 
-    const {inventoryId} = useParams();
+    const {warehouseId} = useParams();
     console.log(inventoryId)
 
-    let inventoryURL = `http://localhost:8080/inventories/${inventoryId}`;
-
+    let inventoryURL = `http://localhost:8080/inventories/${warehouseId}`;
+    let inventoryItemURL = `http://localhost:8080/inventories/${warehouseId}/params.warehouseName`;
     useEffect(() => {
 
         axios.get(inventoryURL).then(response => {
@@ -61,7 +61,7 @@ function EditInventoryItem () {
     }
 
     return (
-            <>
+        <>
             <div className = "edit-item">
             <div className = "edit-item__title-container">
             <Link to= "/"><img className = "edit-item__back-arrow" src = {backArrowIcon} alt = "back-arrow"></img></Link>
@@ -143,7 +143,7 @@ function EditInventoryItem () {
             </div>
             </form>
             </div>
-            </>
+        </>
     )
 }
 
