@@ -1,5 +1,5 @@
 import "./Inventory.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import deleteIcon from "../../assets/Icons/delete_outline-24px.svg";
 import editIcon from "../../assets/Icons/edit-24px.svg";
@@ -31,7 +31,9 @@ function Inventory(props) {
             className="inventory__search"
             placeholder="Search..."
           ></input>
-          <button className="inventory__button">+ Add New Item</button>
+          <Link to="/inventory/new" className="inventory__button">
+            + Add New Item
+          </Link>
         </div>
       </div>
       <div className="inventory__categories">
@@ -58,10 +60,10 @@ function Inventory(props) {
         <span className="inventory__category--right">ACTIONS</span>
       </div>
       {props.inventoriesData.map((thumb) => (
-        <div className="warehouse" key={thumb.id}>
+        <div className="inventory" key={thumb.id}>
           <div className="inventory__text">
             <div className="inventory__left">
-              <Link to={`/warehouses/${thumb.id}`} className="inventory__link">
+              <Link to={`/inventory/${thumb.id}`} className="inventory__link">
                 <div className="inventory__nameAndArrow">
                   <p className="inventory__name">{thumb.itemName}</p>
                   <img src={rightArrow} className="inventory__rightArrow" />
