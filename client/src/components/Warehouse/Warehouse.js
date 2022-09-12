@@ -93,7 +93,7 @@ function Warehouse(props) {
                 src={deleteIcon}
                 className="warehouse__deleteicon"
               />
-              <img src={editIcon} className="warehouse__editicon" />
+              <Link to={`edit-warehouse/${warehouse.id}`}><img src={editIcon} className="warehouse__editicon"/></Link>
             </div>
           </div>
         ))}

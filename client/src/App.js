@@ -11,7 +11,7 @@ import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
 import InventoryItemsDetails from "./pages/InventoryItemsDetails/InventoryItemsDetails";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
-
+import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
 import WarehouseDetails from "./pages/Warehouse-details/WarehouseDetails";
 // import InventoryItemsDetails from "./pages/InventoryItemsDetails/InventoryItemsDetails";
 
@@ -41,6 +41,7 @@ function App() {
             ></Route>
 
             <Route path="/warehouses/new" element={<NewWarehouse />}></Route>
+            <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse/>}/>
           </Routes>          
         </div>
         <Footer />
