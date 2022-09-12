@@ -289,6 +289,8 @@
         }
 
         &-title {
+            color: $table-colum-ph;
+
             @include h4-mobile;
 
             @include tablet {
@@ -314,7 +316,7 @@
         }
 
         &-status {
-            margin-bottom: 1rem;
+            margin-bottom: 2.5rem;
 
             @include tablet {
                 width: 50%;
