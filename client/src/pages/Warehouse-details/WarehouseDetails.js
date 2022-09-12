@@ -68,7 +68,7 @@ function WarehouseDetails() {
       <header className="Header">
         <h1 className="Header__title">
           <Link to="/">
-            <img src={backArrow} alt="arrow_back" />
+            <img className="back-arrow" src={backArrow} alt="arrow_back" />
           </Link>
           {currentWarehouse?.name}
         </h1>
@@ -84,7 +84,7 @@ function WarehouseDetails() {
         <div className="warehouse-details__address">
           <h2 className="warehouse-details__title">WAREHOUSE ADDRESS:</h2>
           <p className="warehouse-details__info">
-            {currentWarehouse?.address} {currentWarehouse.city},{" "}
+            {currentWarehouse?.address}, {currentWarehouse.city},{" "}
             {currentWarehouse.country}
           </p>
         </div>
@@ -173,11 +173,11 @@ function WarehouseDetails() {
                   </div>
                   <div className="Inventory__items-quantity">
                     <li className="Inventory__items-title">QTY</li>
-                    <li>{inventory.quantity}</li>
+                    <li className="Inventory__items-quantity-details">{inventory.quantity}</li>
                   </div>
                 </div>
                 <li className="Inventory__items-actions">
-                  <img
+                  <img className="trashCan"
                     src={trashButton}
                     alt="delete"
                     onClick={() => delHandle(inventory.itemName, inventory.id)}
