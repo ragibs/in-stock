@@ -47,30 +47,6 @@ function EditWarehouse () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // if (warehouseDetails.warehouseName === "") {
-        //     setErrorMessage("This field is required");
-        // }
-        // if (warehouseDetails.address === "") {
-        //     setErrorMessage("This field is required");
-        // }
-        // if (warehouseDetails.city === "") {
-        //     setErrorMessage("This field is required");
-        // }
-        // if (warehouseDetails.country === "") {
-        //     setErrorMessage("This field is required");
-        // }
-        // if (warehouseDetails.contact.name === "") {
-        //     setErrorMessage("This field is required");
-        // }
-        // if (warehouseDetails.contact.position === "") {
-        //     setErrorMessage("This field is required");
-        // }
-        // if (warehouseDetails.contact.phone === "") {
-        //     setErrorMessage("This field is required");
-        // }
-        // if (warehouseDetails.contact.email === "") {
-        //     setErrorMessage("This field is required");
-        // }
         const updatedWarehouse = {
             warehouseName: warehouseDetails.name, 
             street: warehouseDetails.address, 
