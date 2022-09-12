@@ -12,7 +12,6 @@
 
     @include tablet {
         margin: -5.5rem 2rem 5.5rem;
-        padding: 1.5rem 1.5rem;
     }
 
     @include desktop {
@@ -100,6 +99,7 @@
 
 .inventory-container-status-quantity-warehouse {
     @include tablet {
+        width: 100%;
         border-left: 1px solid $divider;
         padding-left: 1rem;
     }
@@ -108,13 +108,13 @@
 .info-title {
     @include h4-mobile;
     color: $table-colum-ph;
-    width: 50vw;
+    width: 50%;
 
     @include tablet {
-        width: 30vw;
+        width: 30%;
     }
 }
 
 .info-details {
-    @include h4-mobile;
+    @include body-medium-mobile
 }
