@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios"
 import { Link, useParams } from "react-router-dom";
 import backArrowIcon from "../../assets/Icons/arrow_back-24px.svg";
+import error from "../../assets/Icons/error-24px.svg";
 
 function EditWarehouse () {
-
+    const [errorMessage, setErrorMessage] = useState("")
     const [warehouseDetails, setWarehouseDetails] = useState({
         warehouseName: "",
         street: "",
@@ -46,7 +47,30 @@ function EditWarehouse () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
+        // if (warehouseDetails.warehouseName === "") {
+        //     setErrorMessage("This field is required");
+        // }
+        // if (warehouseDetails.address === "") {
+        //     setErrorMessage("This field is required");
+        // }
+        // if (warehouseDetails.city === "") {
+        //     setErrorMessage("This field is required");
+        // }
+        // if (warehouseDetails.country === "") {
+        //     setErrorMessage("This field is required");
+        // }
+        // if (warehouseDetails.contact.name === "") {
+        //     setErrorMessage("This field is required");
+        // }
+        // if (warehouseDetails.contact.position === "") {
+        //     setErrorMessage("This field is required");
+        // }
+        // if (warehouseDetails.contact.phone === "") {
+        //     setErrorMessage("This field is required");
+        // }
+        // if (warehouseDetails.contact.email === "") {
+        //     setErrorMessage("This field is required");
+        // }
         const updatedWarehouse = {
             warehouseName: warehouseDetails.name, 
             street: warehouseDetails.address, 
@@ -81,25 +105,73 @@ function EditWarehouse () {
             <form onSubmit = {handleSubmit} className = "edit-warehouse__form">
                 <div className = "edit-warehouse__warehouse-container">
                     <h2 className = "edit-warehouse__title">Warehouse Details</h2>
-                    <label htmlFor = "edit-warehouse__form---name" className = "edit-warehouse__form--name-label">Warehouse Name</label>
-                    <input type = "text" className = "edit-warehouse__form--name" placeholder = "Warehouse Name" defaultValue = {warehouseDetails.warehouseName} onChange = {handleChange}></input>
+                    <label htmlFor = "edit-warehouse__form--warehouse-name" className = "edit-warehouse__form--warehouse-name-label">Warehouse Name</label>
+                    <input type = "text" className = "edit-warehouse__form--warehouse-name" placeholder = "Warehouse Name" defaultValue = {warehouseDetails.name} onChange = {handleChange}></input>
+                    {warehouseDetails.name === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                     <label htmlFor = "edit-warehouse__form--street" className = "edit-warehouse__form--street-label">Street Address</label>
-                    <input type = "text" className = "edit-warehouse__form--street" placeholder = "Warehouse Street" defaultValue = {warehouseDetails.street} onChange = {handleChange}></input>
+                    <input type = "text" className = "edit-warehouse__form--street" placeholder = "Warehouse Street" defaultValue = {warehouseDetails.address} onChange = {handleChange}></input>
+                    {warehouseDetails.address === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                     <label htmlFor = "edit-warehouse__form--city" className = "edit-warehouse__form--city-label">City</label>
                     <input type = "text" className = "edit-warehouse__form--city" placeholder = "Warehouse City" defaultValue = {warehouseDetails.city} onChange = {handleChange}></input>
+                    {warehouseDetails.city === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                     <label htmlFor = "edit-warehouse__form--country" className = "edit-warehouse__form--country-label">Country</label>
                     <input type = "text" className = "edit-warehouse__form--country" placeholder = "Warehouse Country" defaultValue = {warehouseDetails.country} onChange = {handleChange}></input>
+                    {warehouseDetails.country === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                 </div>
                 <div className = "edit-warehouse__contact-container">
                     <h2 className = "edit-warehouse__title">Contact Details</h2>
-                    <label htmlFor = "edit-warehouse__form--name" className = "edit-warehouse__form--name-label">Contact Name</label>
-                    <input type = "text" className = "edit-warehouse__form--name" placeholder = "Contact Name" defaultValue = {warehouseDetails.contact.name} onChange = {handleChange}></input>
+                    <label htmlFor = "edit-warehouse__form--contact-name" className = "edit-warehouse__form--contact-name-label">Contact Name</label>
+                    <input type = "text" className = "edit-warehouse__form--contact-name" placeholder = "Contact Name" defaultValue = {warehouseDetails.contact.name} onChange = {handleChange}></input>
+                    {warehouseDetails.contact.name === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                     <label htmlFor = "edit-warehouse__form--position" className = "edit-warehouse__form--position-label">Position</label>
                     <input type = "text" className = "edit-warehouse__form--position" placeholder = "Position" defaultValue = {warehouseDetails.contact.position} onChange = {handleChange}></input>
+                    {warehouseDetails.contact.position === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                     <label htmlFor = "edit-warehouse__form--number" className = "edit-warehouse__form--number-label">Phone Number</label>
                     <input type = "text" className = "edit-warehouse__form--number" placeholder = "Phone number" defaultValue = {warehouseDetails.contact.phone} onChange = {handleChange}></input>
+                    {warehouseDetails.contact.phone === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                     <label htmlFor = "edit-warehouse__form--email" className = "edit-warehouse__form--email-label">Email</label>
                     <input type = "text" className = "edit-warehouse__form--email" placeholder = "Email" defaultValue = {warehouseDetails.contact.email} onChange = {handleChange}></input>
+                    {warehouseDetails.contact.email === "" && (
+                        <div className = "edit-item__form--error-box">
+                            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                            <div className = "edit-item__form--error-message">This field is required</div>
+                        </div>    
+                    )}
                     <div className = "edit-warehouse__buttons-container">
                         <Link to="/"><button className = "edit-warehouse__cancel-button" type = "submit">Cancel</button></Link>
                         <button className = "edit-warehouse__save-button" type = "submit">Save</button>

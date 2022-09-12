@@ -92,7 +92,7 @@
             margin-right: 2.5rem;
         }
     }
-    &__form--name-label {
+    &__form--warehouse-name-label {
         @include h3-mobile;
         margin-top: 1.25rem;
         margin-bottom: 0.25rem;
@@ -100,7 +100,7 @@
             @include h3-tablet;
         }
     }
-    &__form--name {
+    &__form--warehouse-name {
         width: 16rem;
         height: 2.25rem;
         border: 1px solid $divider;
@@ -117,7 +117,7 @@
             width: 27rem;
         }
     }
-    &__form--name::placeholder {
+    &__form--warehouse-name::placeholder {
         @include h4-mobile; 
         @include tablet {
             @include h4-tablet;
@@ -218,6 +218,37 @@
             width: 50%;
             margin-left: 2rem;
         }
+    }
+    &__form--contact-name-label {
+        @include h3-mobile;
+        margin-top: 1.25rem;
+        margin-bottom: 0.25rem;
+        @include tablet {
+            @include h3-tablet;
+        }
+    }
+    &__form--contact-name {
+        width: 16rem;
+        height: 2.25rem;
+        border: 1px solid $divider;
+        border-radius: 1.25rem;
+        padding-left: 0.5rem;
+        margin-bottom: 0.5rem;
+        @include tablet {
+            width: 18rem;
+            padding-left: 0.75rem;
+            margin-right: 2rem;
+            margin-bottom: 1rem;
+        }
+        @include desktop {
+            width: 27rem;
+        }
+    }
+    &__form--contact-name::placeholder {
+        @include h4-mobile; 
+        @include tablet {
+            @include h4-tablet;
+        }   
     }
     &__form--position-label {
         @include h3-mobile;
