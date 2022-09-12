@@ -112,11 +112,10 @@ router.put("/:id", (req, res) => {
   let body = req.body;
   let index = warehouseData.findIndex((warehouse) => warehouse.id === id);
   if (index >= 0) {
-    let updatedWarehouse = { id: id, ...body };
+    let updatedWarehouse = {...body};
     warehouseData[index] = updatedWarehouse;
     fs.writeFileSync("./data/warehouses.json", JSON.stringify(warehouseData));
     res.send(updatedWarehouse);
-    console.log(updatedWarehouse);
   } else {
     res.status(404).send("Warehouse was not found");
   }
