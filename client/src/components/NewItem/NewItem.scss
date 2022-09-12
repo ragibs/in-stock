@@ -50,7 +50,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 2rem 0 2rem;
     width: 100%;
     &--details {
       @include tablet {
@@ -164,7 +164,9 @@
   }
   &__button-container {
     display: flex;
-    margin-left: 2rem;
+    margin-top: 2rem;
+    background-color: rgba(247, 248, 249, 0.7);
+    padding: 2rem 0 2rem 2rem;
   }
   &__button {
     line-height: 2.25rem;
