@@ -8,7 +8,6 @@
 
 .new-warehouse {
   width: 100%;
-  padding-bottom: 1rem;
   margin-bottom: 3rem;
   margin: -5rem 1rem 3rem 1rem;
   background-color: $white-global;
@@ -20,9 +19,6 @@
   @include desktop {
     max-width: $desktop-breakpoint;
     margin: -6.6rem auto 3rem auto;
-  }
-  &__form {
-    padding-bottom: 2rem;
   }
   &__form-container {
     display: flex;
@@ -36,7 +32,7 @@
     padding: 2rem;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid $divider;
+    border-bottom: 1px solid $divider;
   }
   &__header-link {
     margin-right: 0.5rem;
@@ -51,15 +47,15 @@
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
-    padding: 0 2rem 2rem 2rem;
+    padding: 0 2rem 0 2rem;
     width: 100%;
     &--warehouse {
       @include tablet {
-        border-right: 2px solid $divider;
+        border-right: 1px solid $divider;
       }
     }
     &--contact {
-      border-top: 2px solid $divider;
+      border-top: 1px solid $divider;
       padding-top: 2rem;
       margin: 0;
       @include tablet {
@@ -103,35 +99,41 @@
   }
   &__button-container {
     display: flex;
-    margin-left: 2rem;
+    margin-top: 2rem;
+    background-color: rgba(247, 248, 249, 0.7);
+    padding: 2rem 0 2rem 2rem;
   }
   &__button {
     line-height: 2.25rem;
     border-radius: 2rem;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     background-color: $interactive-elements;
     border: none;
     cursor: pointer;
     font-family: "Titillium Web";
-    font-size: 0.9rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 50%;
     margin-right: 2rem;
+    font-size: 0.8rem;
     color: $white-global;
+    @include tablet {
+      padding: 0 1rem;
+      font-size: 0.9rem;
+    }
     &:hover {
       background-color: $bg-hover-header;
     }
     &--cancel {
       border: 1px solid $divider;
-      background: none;
+      background-color: $white-global;
       color: $table-colum-ph;
       &:hover {
         border-color: $interactive-elements;
         color: $interactive-elements;
-        background: none;
+        background-color: $white-global;
       }
       @include tablet {
         margin-left: auto;

@@ -68,7 +68,7 @@ function WarehouseDetails() {
       <header className="Header">
         <h1 className="Header__title">
           <Link to="/">
-            <img src={backArrow} alt="arrow_back" />
+            <img className="back-arrow" src={backArrow} alt="arrow_back" />
           </Link>
           {currentWarehouse?.name}
         </h1>
@@ -84,7 +84,7 @@ function WarehouseDetails() {
         <div className="warehouse-details__address">
           <h2 className="warehouse-details__title">WAREHOUSE ADDRESS:</h2>
           <p className="warehouse-details__info">
-            {currentWarehouse?.address} {currentWarehouse.city},{" "}
+            {currentWarehouse?.address}, {currentWarehouse.city},{" "}
             {currentWarehouse.country}
           </p>
         </div>
@@ -113,19 +113,19 @@ function WarehouseDetails() {
       <section className="Inventory">
         <ul className="Inventory__header">
           <li className="Inventory__item-title">
-            INVENTORY ITEM <img src={sortButton} alt="sortButton" />
+            INVENTORY ITEM <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            CATEGORY <img src={sortButton} alt="sortButton" />
+            CATEGORY <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            STATUS <img src={sortButton} alt="sortButton" />
+            STATUS <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            QTY <img src={sortButton} alt="sortButton" />
+            QTY <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
           <li className="Inventory__item-title">
-            ACTIONS <img src={sortButton} alt="sortButton" />
+            ACTIONS <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
           </li>
         </ul>
 
@@ -173,11 +173,11 @@ function WarehouseDetails() {
                   </div>
                   <div className="Inventory__items-quantity">
                     <li className="Inventory__items-title">QTY</li>
-                    <li>{inventory.quantity}</li>
+                    <li className="Inventory__items-quantity-details">{inventory.quantity}</li>
                   </div>
                 </div>
                 <li className="Inventory__items-actions">
-                  <img
+                  <img className="trashCan"
                     src={trashButton}
                     alt="delete"
                     onClick={() => delHandle(inventory.itemName, inventory.id)}
