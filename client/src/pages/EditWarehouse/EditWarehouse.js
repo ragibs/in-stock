@@ -42,8 +42,8 @@ function EditWarehouse () {
         event.preventDefault();
 
         const updatedWarehouse = {
-            warehouseName: event.target.warehouseName.value, 
-            street: event.target.street.value, 
+            warehouseName: event.target.name.value, 
+            street: event.target.address.value, 
             city: event.target.city.value, 
             country: event.target.country.value, 
             contact: {
