@@ -6,10 +6,10 @@ import backArrowIcon from "../../assets/Icons/arrow_back-24px.svg";
 import arrowDropDown from "../../assets/Icons/arrow_drop_down-24px.svg";
 import error from "../../assets/Icons/error-24px.svg";
 
-function EditInventoryItem () {
+function EditInventoryItem (props) {
 
     const [itemDetails, setItemDetails] = useState({
-        warehouseID: "",
+        warehouseId: "",
         warehouseName: "",
         itemName: "",
         description: "",
@@ -17,45 +17,55 @@ function EditInventoryItem () {
         status: "",
         quantity: 0,
     }); 
-
-    const {warehouseId} = useParams();
-    console.log(inventoryId)
-
-    let inventoryURL = `http://localhost:8080/inventories/${warehouseId}`;
-    let inventoryItemURL = `http://localhost:8080/inventories/${warehouseId}/params.warehouseName`;
+    
+   
     useEffect(() => {
-
-        axios.get(inventoryURL).then(response => {
-        if(response.data.status === 200) {
+        
+        axios.get(`http://localhost:8080/inventories/${props.match.params.id}/${props.match.params.warehouseName}`)
+        .then(response => {
             console.log(response.data); 
-            setItemDetails(response.data); 
-        }
+            setItemDetails(
+                {
+                    warehouseId: response.data.id,
+                    warehouseName: response.data.warehouseName,
+                    itemName: response.data.itemName,
+                    description: response.data.description,
+                    category: response.data.category,
+                    status: response.data.status,
+                    quantity: response.data.quantity  
+                }
+            ); 
+        
         });
-    }, [inventoryURL]);
-
-    const handleChange = (event) => {
-        setItemDetails({
-        ...itemDetails, 
-        [event.target.name]: event.target.value,
-        });
-    }
+    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
         const updatedInventoryItem = {
-        itemName: itemDetails.itemName, 
-        description: itemDetails.description, 
-        category: itemDetails.category, 
-        status: itemDetails.status, 
-        quantity: itemDetails.quantity
+            warehouseName: event.target.warehouseName.value,
+            itemName: event.target.itemName.value, 
+            description: event.target.description.value, 
+            category: event.target.category.value, 
+            status: event.target.status.value, 
+            quantity: event.target.quantity.value,
+        };
+
+    axios.put("http://localhost:8080/inventories", updatedInventoryItem)
+        .then(response => {
+            setItemDetails = {
+                warehouseName: "",
+                itemName: "",
+                description: "",
+                category: "",
+                status: "",
+                quantity: 0,
+            }
+        })
+        .catch(error => console.log(error));
     };
 
-    axios.put(`http://localhost:8080/warehouses/${inventoryId}`, updatedInventoryItem)
-    .then(response => {
-    console.log(response.data)
-    })
-    .catch(error => console.log(error));
-    };
+
     if ((itemDetails === null || itemDetails === undefined)) {
     return <h1>Loading...</h1>
     }
