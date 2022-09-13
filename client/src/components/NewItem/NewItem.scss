@@ -8,7 +8,6 @@
 
 .new-item {
   width: 100%;
-  padding-bottom: 1rem;
   margin: -5rem 1rem 3rem 1rem;
   background-color: $white-global;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
@@ -35,7 +34,7 @@
     padding: 2rem;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid $divider;
+    border-bottom: 1px solid $divider;
   }
   &__header-link {
     margin-right: 0.5rem;
@@ -54,11 +53,11 @@
     width: 100%;
     &--details {
       @include tablet {
-        border-right: 2px solid $divider;
+        border-right: 1px solid $divider;
       }
     }
     &--availability {
-      border-top: 2px solid $divider;
+      border-top: 1px solid $divider;
       padding-top: 2rem;
       margin: 0;
       @include tablet {
@@ -189,12 +188,12 @@
     }
     &--cancel {
       border: 1px solid $divider;
-      background: none;
+      background-color: $white-global;
       color: $table-colum-ph;
       &:hover {
         border-color: $interactive-elements;
         color: $interactive-elements;
-        background: none;
+        background-color: $white-global;
       }
       @include tablet {
         margin-left: auto;
