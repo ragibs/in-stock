@@ -8,7 +8,6 @@
 
 .new-warehouse {
   width: 100%;
-  padding-bottom: 1rem;
   margin-bottom: 3rem;
   margin: -5rem 1rem 3rem 1rem;
   background-color: $white-global;
@@ -125,12 +124,12 @@
     }
     &--cancel {
       border: 1px solid $divider;
-      background: none;
+      background-color: $white-global;
       color: $table-colum-ph;
       &:hover {
         border-color: $interactive-elements;
         color: $interactive-elements;
-        background: none;
+        background-color: $white-global;
       }
       @include tablet {
         margin-left: auto;
