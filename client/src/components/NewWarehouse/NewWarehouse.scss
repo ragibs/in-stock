@@ -32,7 +32,7 @@
     padding: 2rem;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid $divider;
+    border-bottom: 1px solid $divider;
   }
   &__header-link {
     margin-right: 0.5rem;
@@ -51,11 +51,11 @@
     width: 100%;
     &--warehouse {
       @include tablet {
-        border-right: 2px solid $divider;
+        border-right: 1px solid $divider;
       }
     }
     &--contact {
-      border-top: 2px solid $divider;
+      border-top: 1px solid $divider;
       padding-top: 2rem;
       margin: 0;
       @include tablet {
