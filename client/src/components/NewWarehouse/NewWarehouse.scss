@@ -106,19 +106,23 @@
   &__button {
     line-height: 2.25rem;
     border-radius: 2rem;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     background-color: $interactive-elements;
     border: none;
     cursor: pointer;
     font-family: "Titillium Web";
-    font-size: 0.9rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 50%;
     margin-right: 2rem;
+    font-size: 0.8rem;
     color: $white-global;
+    @include tablet {
+      padding: 0 1rem;
+      font-size: 0.9rem;
+    }
     &:hover {
       background-color: $bg-hover-header;
     }
