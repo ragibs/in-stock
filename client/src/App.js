@@ -41,7 +41,7 @@ function App() {
             ></Route>
 
             <Route path="/warehouses/new" element={<NewWarehouse />}></Route>
-            <Route path="/edit-warehouse/:warehouseId" element={<EditWarehouse/>}/>
+            <Route path="/warehouses/edit-warehouse/:warehouseId" element={<EditWarehouse/>}/>
           </Routes>          
         </div>
         <Footer />
