@@ -88,8 +88,11 @@
     }
 
     &__edit-icon {
-        margin-right: 0.25rem;
         filter: brightness(0) invert(1);
+
+        @include tablet {
+            margin-right: 0.25rem;
+        }
     }
 }
 
@@ -239,6 +242,8 @@
 
 
     &__item-title {
+        color: $table-colum-ph;
+
         @include tablet {
             width: 50%;
             display: flex;
@@ -248,11 +253,9 @@
 
     &__items {
         padding: 1.5rem;
-        align-items: center;
         list-style: none;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         flex-wrap: wrap;
         border-bottom: 1px solid $divider;
 
@@ -286,6 +289,8 @@
         }
 
         &-title {
+            color: $table-colum-ph;
+
             @include h4-mobile;
 
             @include tablet {
@@ -304,13 +309,18 @@
         &-name {
             margin-bottom: 1rem;
             width: 50%;
+
+            @include tablet {
+                margin-bottom: 0;
+            }
         }
 
         &-status {
-            margin-bottom: 1rem;
+            margin-bottom: 2.5rem;
 
             @include tablet {
                 width: 50%;
+                margin-bottom: 0;
             }
         }
 
@@ -326,6 +336,7 @@
 
             @include body-medium-mobile;
             color: $interactive-elements;
+            font-weight: 600;
 
             &:hover {
                 text-decoration: underline;
@@ -333,7 +344,9 @@
 
             @include tablet {
                 width: 20vw;
-                @include body-medium-tablet
+                @include body-medium-tablet;
+                font-weight: 600;
+
             }
 
 
@@ -347,17 +360,21 @@
             @include tablet {
                 width: 20%;
                 justify-content: flex-start;
-                padding: .5rem;
+                padding-bottom: 1rem;
             }
 
 
         }
 
         &-container {
+            width: 50%;
+            margin-bottom: 1rem;
+
             @include tablet {
                 display: flex;
                 flex-direction: row;
                 width: 40%;
+                margin-bottom: 0;
             }
         }
 
