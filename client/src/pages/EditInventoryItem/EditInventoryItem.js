@@ -17,8 +17,7 @@ function EditInventoryItem (props) {
         status: "",
         quantity: 0,
     }); 
-    
-   
+
     useEffect(() => {
         
         axios.get(`http://localhost:8080/inventories/${props.match.params.id}/${props.match.params.warehouseName}`)
@@ -114,11 +113,8 @@ function EditInventoryItem (props) {
             <div className = "edit-item__form--availability-container">
                 <h2 className = "edit-item__form--availability-title">Item Availability</h2>
                 <label htmlFor = "edit-item__form-radio" className = "edit-warehouse__form-label">Status</label>
-                
                 <input type = "radio" className = "edit-item__form-radio" name = "status" defaultValue = "In Stock"/>
                 <p className = "edit-item__form--status-text">Out of stock</p>
-                
-                
                 <input type = "radio" className = "edit-item__form-radio" name = "status" defaultValue = "Out of Stock"/>
                 <p className = "edit-item__form--status-text">In stock</p>
                 {itemDetails.status === "" && (

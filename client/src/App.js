@@ -14,7 +14,7 @@ import InventoryPage from "./pages/InventoryPage/InventoryPage";
 
 import WarehouseDetails from "./pages/Warehouse-details/WarehouseDetails";
 // import InventoryItemsDetails from "./pages/InventoryItemsDetails/InventoryItemsDetails";
-
+import EditInventoryItem from "./pages/EditInventoryItem/EditInventoryItem";
 import NewWarehouse from "./components/NewWarehouse/NewWarehouse";
 import NewItem from "./components/NewItem/NewItem";
 
