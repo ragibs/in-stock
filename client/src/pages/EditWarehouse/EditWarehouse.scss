@@ -64,9 +64,6 @@
             border-right: 1px solid $divider;
             border-bottom: hidden!important;  
         }
-        @include desktop {
-            
-        }
     }
     &__title {
         @include h2-mobile;
