@@ -1,0 +1,107 @@
+@use "../../styles/global.scss" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+
+.edit-item {
+    width: 100%;
+    padding-bottom: 1rem;
+    margin: -5rem 1rem 3rem 1rem;
+    background-color: $white-global;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-radius: 0.25rem;
+    @include tablet {
+        margin: -6.6rem 2rem 3rem 2rem;
+    }
+    @include desktop {
+        max-width: $desktop-breakpoint;
+        margin: -6.6rem auto 3rem auto;
+    }
+    &__title-container {
+        display: flex;
+        justify-content: left;
+        border-bottom: 1px solid $divider;
+        height: 5.75rem;
+        @include tablet {
+            height: 5.81rem;
+        }
+    }
+    &__back-arrow {
+        color: $interactive-elements;
+        width: 1rem;
+        height: 1rem;
+        margin-left: 1rem;
+        margin-top: 2.75rem;
+        @include tablet {
+            margin-left: 2.25rem;
+            margin-top: 2.81rem;
+        }
+        @include desktop {
+            margin-left: 2.75rem;
+            margin-top: 2.81rem;
+        }
+    }
+    &__header-title {
+        @include h1-mobile;
+        margin: 2rem 3.5rem 1.5rem 0.5rem;
+        @include tablet {
+            @include h1-tablet;
+            width: 13.56rem;
+            height: 2.5rem;
+            margin-left: 0.75rem;
+            margin-top: 2rem;
+        }
+        @include desktop {
+            margin-left: 4.5rem;
+            margin-top: 2rem;
+        }
+    }
+    
+    
+    &__form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2rem;
+        padding: 0 2rem 2rem 2rem;
+        width: 100%;
+        &__form--item-container {
+            @include tablet {
+                border-right: 2px solid $divider;
+            }
+        }
+        &__form--item-title {
+            @include h2-mobile;
+            margin: 1rem 0;
+            @include tablet {
+                @include h2-tablet;
+                margin-top: 0.5rem;
+            }
+        }
+        &__form--name-label {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        &__form--name {
+            line-height: 2.25rem;
+            border-radius: 2rem;
+            padding: 0 1rem;
+            border: 1px solid $divider;
+            margin-top: 0.2rem;
+            font-family: "Titillium Web";
+            &::placeholder {
+            color: $table-colum-ph;
+            }
+            &:focus {
+            border: 1px solid $interactive-elements;
+            outline: none;
+            }
+            &--error {
+            border-color: $out-stock-error;
+            }
+        }
+    }
+}

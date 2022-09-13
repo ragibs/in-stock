@@ -62,87 +62,84 @@ function EditInventoryItem () {
 
     return (
         <>
-            <div className = "edit-item">
+        <div className = "edit-item">
             <div className = "edit-item__title-container">
-            <Link to= "/"><img className = "edit-item__back-arrow" src = {backArrowIcon} alt = "back-arrow"></img></Link>
-            <h1 className = "edit-item__header-title">Edit Inventory Item</h1>
+                <Link to= "/"><img className = "edit-item__back-arrow" src = {backArrowIcon} alt = "back-arrow"></img></Link>
+                <h1 className = "edit-item__header-title">Edit Inventory Item</h1>
             </div> 
             <form onSubmit = {handleSubmit} className = "edit-item__form">
             <div className = "edit-item__form--item-container">
-            <h2 className = "edit-item__form--item-title">Item Details</h2>
-            <label htmlFor = "edit-item__form--name" className = "edit-inventory__form--name-label">Item Name</label>
-            <input type = "text" className = "edit-item__form--name" placeholder = "Item Name" required value = {itemDetails.itemName} onChange = {handleChange}></input>
-            {itemDetails.itemName === "" && (
-            <div className = "edit-item__form--error-box">
-            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
-            <div className = "edit-item__form--error-message">This field is required</div>
-            </div> 
-            )}
-            <label htmlFor = "edit-item__form--description" className = "edit-inventory__form--description-label">Description</label>
-            <textarea type = "text" className = "edit-item__form--description" placeholder = "Description" required value = {itemDetails.description} onChange = {handleChange}></textarea>
-            {itemDetails.description === "" && (
-            <div className = "edit-item__form--error-box">
-            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
-            <div className = "edit-item__form--error-message">This field is required</div>
-            </div> 
-            )}
-            <label htmlFor = "edit-item__form--category" className = "edit-warehouse__form--category-label">Category</label>
-            <select type = "text" className = "edit-item__form--dropdown" style={arrowDropDown} name = "category" required value = {itemDetails.category}>
-            <option type = "text" value = "Electronics">Electronics</option>
-            <option type = "text" value = "Gear">Gear</option>
-            <option type = "text" value = "Apparel">Apparel</option>
-            <option type = "text" value = "Accessories">Accessories</option>
-            <option type = "text" value = "Health">Health</option> 
-            </select>
-            {itemDetails.category === "" && (
-            <div className = "edit-item__form--error-box">
-            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
-            <div className = "edit-item__form--error-message">This field is required</div>
-            </div> 
-            )}
+                <h2 className = "edit-item__form--item-title">Item Details</h2>
+                <label htmlFor = "edit-item__form-input" className = "edit-inventory__form-label">Item Name</label>
+                <input type = "text" className = "edit-item__form-input" placeholder = "Item Name" defaultValue = {itemDetails.itemName}></input>
+                {itemDetails.itemName === "" && (
+                <div className = "edit-item__form--error-box">
+                    <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                    <div className = "edit-item__form--error-message">This field is required</div>
+                </div> 
+                )}
+                <label htmlFor = "edit-item__form-textarea" className = "edit-inventory__form-label">Description</label>
+                <textarea type = "text" className = "edit-item__form-textarea" placeholder = "Description" defaultValue = {itemDetails.description}></textarea>
+                {itemDetails.description === "" && (
+                <div className = "edit-item__form--error-box">
+                    <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                    <div className = "edit-item__form--error-message">This field is required</div>
+                </div> 
+                )}
+                <label htmlFor = "edit-item__form-select" className = "edit-warehouse__form-label">Category</label>
+                <select type = "text" className = "edit-item__form-select" style={arrowDropDown} name = "category" defaultValue = {itemDetails.category}>
+                <option type = "text" value = "Electronics">Electronics</option>
+                <option type = "text" value = "Gear">Gear</option>
+                <option type = "text" value = "Apparel">Apparel</option>
+                <option type = "text" value = "Accessories">Accessories</option>
+                <option type = "text" value = "Health">Health</option> 
+                </select>
+                {itemDetails.category === "" && (
+                <div className = "edit-item__form--error-box">
+                    <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                    <div className = "edit-item__form--error-message">This field is required</div>
+                </div> 
+                )}
             </div>
             <div className = "edit-item__form--availability-container">
-            <h2 className = "edit-item__form--availability-title">Item Availability</h2>
-            <label htmlFor = "edit-item__form--status" className = "edit-warehouse__form--status-label">Status</label>
-            <div className = "edit-item__form--status-container">
-            <div className = "edit-item__form--status-container1">
-            <input type = "radio" className = "edit-item__form--status-input" name = "status" required value = "In Stock" onChange = {handleChange}/>
-            <p className = "edit-item__form--status-text">Out of stock</p>
-            </div>
-            <div className = "edit-item__form--status-container2">
-            <input type = "radio" className = "edit-item__form--status-input" name = "status" required value = "Out of Stock" onChange = {handleChange}/>
-            <p className = "edit-item__form--status-text">In stock</p>
-            </div>
-            </div>
-            {itemDetails.status === "" && (
-            <div className = "edit-item__form--error-box">
-            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
-            <div className = "edit-item__form--error-message">This field is required</div>
-            </div> 
-            )}
-            <label htmlFor = "edit-item__form--warehouse" className = "edit-item__form--warehouse-label">Warehouse</label>
-            <select type = "text" className = "edit-item__form--dropdown" name = "warehouse" required value = {itemDetails.warehouseName}>
-            <option type = "text" value = "Manhattan">Manhattan</option>
-            <option type = "text" value = "Washington">Washington</option>
-            <option type = "text" value = "Jersey">Jersey</option>
-            <option type = "text" value = "San Fran">San Fran</option>
-            <option type = "text" value = "Santa Monica">Santa Monica</option>
-            <option type = "text" value = "Seattle">Seattle</option>
-            <option type = "text" value = "Miami">Miami</option>
-            </select>
-            {itemDetails.warehouseName === "" && (
-            <div className = "edit-item__form--error-box">
-            <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
-            <div className = "edit-item__form--error-message">This field is required</div>
-            </div> 
-            )}
+                <h2 className = "edit-item__form--availability-title">Item Availability</h2>
+                <label htmlFor = "edit-item__form-radio" className = "edit-warehouse__form-label">Status</label>
+                
+                <input type = "radio" className = "edit-item__form-radio" name = "status" defaultValue = "In Stock"/>
+                <p className = "edit-item__form--status-text">Out of stock</p>
+                
+                
+                <input type = "radio" className = "edit-item__form-radio" name = "status" defaultValue = "Out of Stock"/>
+                <p className = "edit-item__form--status-text">In stock</p>
+                {itemDetails.status === "" && (
+                <div className = "edit-item__form--error-box">
+                    <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                    <div className = "edit-item__form--error-message">This field is required</div>
+                </div> 
+                )}
+                <label htmlFor = "edit-item__form-select" className = "edit-item__form-label">Warehouse</label>
+                <select type = "text" className = "edit-item__form-select" name = "warehouse" defaultValue = {itemDetails.warehouseName}>
+                <option type = "text" value = "Manhattan">Manhattan</option>
+                <option type = "text" value = "Washington">Washington</option>
+                <option type = "text" value = "Jersey">Jersey</option>
+                <option type = "text" value = "San Fran">San Fran</option>
+                <option type = "text" value = "Santa Monica">Santa Monica</option>
+                <option type = "text" value = "Seattle">Seattle</option>
+                <option type = "text" value = "Miami">Miami</option>
+                </select>
+                {itemDetails.warehouseName === "" && (
+                <div className = "edit-item__form--error-box">
+                    <img className = "edit-item__form--error-img" src = {error} alt = "error message"/>
+                    <div className = "edit-item__form--error-message">This field is required</div>
+                </div> 
+                )}
             <div className = "edit-warehouse__buttons-container">
-            <Link to="/"><button className = "edit-warehouse__cancel-button" type = "submit">Cancel</button></Link>
-            <button className = "edit-warehouse__save-button" type = "submit">Save</button>
+                <Link to="/"><button className = "edit-warehouse__cancel-button" type = "submit">Cancel</button></Link>
+                <button className = "edit-warehouse__save-button" type = "submit">Save</button>
             </div>
             </div>
             </form>
-            </div>
+        </div>
         </>
     )
 }
