@@ -8,17 +8,41 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InventoryDelModal from "../../components/InventoryDelModal/InventoryDelModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function WarehouseDetails() {
   const { warehouseID } = useParams();
 
-  let warehouseURL = `http://localhost:8080/warehouses/${warehouseID}`;
-  let inventoryURL = `http://localhost:8080/inventories/${warehouseID}`;
+  let warehouseURL = `https://in-stock-20-server-production.up.railway.app/warehouses/${warehouseID}`;
+  const inventoriesAPIURL =
+    "https://in-stock-20-server-production.up.railway.app/inventories";
 
   const [currentWarehouse, setCurrentWarehouse] = useState();
-  const [currentInventory, setCurrentInventory] = useState();
+  // const [currentInventory, setCurrentInventory] = useState();
   const [deleteInvModal, setDeleteInvModal] = useState(false); //delete inventory modal
   const [deleteInventory, setDeleteInventory] = useState([""]); //pasing data to delete inventory modal
+  const [inventoriesData, setInventoriesData] = useState([]);
+
+  //get all inventories
+  useEffect(() => {
+    axios
+      .get(inventoriesAPIURL)
+      .then((response) => {
+        setInventoriesData(response.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  //filter through all inventories and show just matchin warehouseID
+  const currentInventory = inventoriesData.filter(
+    (inventory) => inventory.warehouseID === warehouseID
+  );
+
+  //toasty
+  const notify = (item) =>
+    toast.success(`${item} was deleted from inventories.`);
 
   const delHandle = (name, id) => {
     setDeleteInventory([name, id]);
@@ -29,25 +53,12 @@ function WarehouseDetails() {
     axios
       .get(warehouseURL)
       .then((response) => {
-        setCurrentWarehouse(response.data);
-        console.log(response.data);
+        setCurrentWarehouse(response.data[0]);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [warehouseURL]);
-
-  useEffect(() => {
-    axios
-      .get(inventoryURL)
-      .then((response) => {
-        setCurrentInventory(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [warehouseURL, currentInventory]);
 
   if (
     currentWarehouse === null ||
@@ -55,7 +66,13 @@ function WarehouseDetails() {
     currentInventory === null ||
     currentInventory === undefined
   ) {
-    return <h1>Loading...</h1>;
+    return (
+      <ClipLoader
+        color="#232940"
+        cssOverride={{ display: "block", margin: "0 auto" }}
+        size={100}
+      />
+    );
   }
   return (
     <div className="page-body">
@@ -63,6 +80,8 @@ function WarehouseDetails() {
         <InventoryDelModal
           setDeleteInvModal={setDeleteInvModal}
           deleteInventory={deleteInventory}
+          notify={notify}
+          setInventoriesData={setInventoriesData}
         />
       )}
       <header className="Header">
@@ -72,13 +91,17 @@ function WarehouseDetails() {
           </Link>
           {currentWarehouse?.name}
         </h1>
-        <button className="Header__edit-button__mobile">
-          <img className="Header__edit-icon" src={editButton} alt="edit" />
-        </button>
-        <button className="Header__edit-button">
-          <img className="Header__edit-icon" src={editButton} alt="edit" />
-          Edit
-        </button>
+        <Link to={`/warehouses/edit-warehouse/${warehouseID}`}>
+          <button className="Header__edit-button__mobile">
+            <img className="Header__edit-icon" src={editButton} alt="edit" />
+          </button>
+        </Link>
+        <Link to={`/warehouses/edit-warehouse/${warehouseID}`}>
+          <button className="Header__edit-button">
+            <img className="Header__edit-icon" src={editButton} alt="edit" />
+            Edit
+          </button>
+        </Link>
       </header>
       <section className="warehouse-details">
         <div className="warehouse-details__address">
@@ -113,26 +136,50 @@ function WarehouseDetails() {
       <section className="Inventory">
         <ul className="Inventory__header">
           <li className="Inventory__item-title">
-            INVENTORY ITEM <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
+            INVENTORY ITEM{" "}
+            <img
+              className="Inventory__sortButton"
+              src={sortButton}
+              alt="sortButton"
+            />
           </li>
           <li className="Inventory__item-title">
-            CATEGORY <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
+            CATEGORY{" "}
+            <img
+              className="Inventory__sortButton"
+              src={sortButton}
+              alt="sortButton"
+            />
           </li>
           <li className="Inventory__item-title">
-            STATUS <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
+            STATUS{" "}
+            <img
+              className="Inventory__sortButton"
+              src={sortButton}
+              alt="sortButton"
+            />
           </li>
           <li className="Inventory__item-title">
-            QTY <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
+            QTY{" "}
+            <img
+              className="Inventory__sortButton"
+              src={sortButton}
+              alt="sortButton"
+            />
           </li>
           <li className="Inventory__item-title">
-            ACTIONS <img className="Inventory__sortButton" src={sortButton} alt="sortButton" />
+            ACTIONS{" "}
+            <img
+              className="Inventory__sortButton"
+              src={sortButton}
+              alt="sortButton"
+            />
           </li>
         </ul>
 
         {currentInventory?.map((inventory) => {
-          console.log(inventory.itemName);
           return (
-            <div className="Inventory__items-grouping">
+            <div className="Inventory__items-grouping" key={inventory.id}>
               <ul className="Inventory__items">
                 <div className="Inventory__items-container">
                   <div className="Inventory__items-name">
@@ -173,22 +220,39 @@ function WarehouseDetails() {
                   </div>
                   <div className="Inventory__items-quantity">
                     <li className="Inventory__items-title">QTY</li>
-                    <li className="Inventory__items-quantity-details">{inventory.quantity}</li>
+                    <li className="Inventory__items-quantity-details">
+                      {inventory.quantity}
+                    </li>
                   </div>
                 </div>
                 <li className="Inventory__items-actions">
-                  <img className="trashCan"
+                  <img
+                    className="trashCan"
                     src={trashButton}
                     alt="delete"
                     onClick={() => delHandle(inventory.itemName, inventory.id)}
                   />
-                  <img src={editButton} alt="edit" />
+                  <Link to={`/inventory/edit-inventory/${inventory.id}`}>
+                    <img src={editButton} alt="edit" />
+                  </Link>
                 </li>
               </ul>
             </div>
           );
         })}
       </section>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }

@@ -22,12 +22,12 @@
     margin: -5rem 1rem 2rem;
     border-radius: 5px;
     width: 100%;
-    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);    
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     @include tablet {
       margin: -5.5rem 2rem 3rem;
     }
     @include desktop {
-      max-width: $desktop-breakpoint;      
+      max-width: $desktop-breakpoint;
       margin: -5.5rem auto 3rem;
     }
   }
@@ -118,11 +118,13 @@
     }
   }
   &__categoryAndArrow {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 16%;
     &--left {
+      cursor: pointer;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -200,8 +202,8 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    &:hover .inventory__rightArrow{
-        transform: translate(4px);        
+    &:hover .inventory__rightArrow {
+      transform: translate(4px);
     }
   }
   &__name {

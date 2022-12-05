@@ -126,6 +126,9 @@
     &:hover {
       background-color: $bg-hover-header;
     }
+    &:disabled {
+      filter: grayscale(100%);
+    }
     &--cancel {
       border: 1px solid $divider;
       background-color: $white-global;

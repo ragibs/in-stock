@@ -1,12 +1,24 @@
 import "./InventoryPage.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Inventory from "../../components/Inventory/Inventory";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function InventoryPage() {
-  const inventoriesAPIURL = "http://localhost:8080/inventories";
+  //using use location to update list if warehouse edited/deleted
+  const location = useLocation();
+  const locationKey = location.key;
+  const [currentUrl, setCurrentUrl] = useState(locationKey);
 
-  const [inventoriesData, setInventoriesData] = useState([]);
+  //location key changes if are changing the url
+  useEffect(() => {
+    setCurrentUrl(locationKey);
+  }, [locationKey]);
+  //api call
+  const inventoriesAPIURL =
+    "https://in-stock-20-server-production.up.railway.app/inventories";
+  const [inventoriesData, setInventoriesData] = useState();
 
   useEffect(() => {
     // setting inventories data
@@ -16,11 +28,24 @@ function InventoryPage() {
         setInventoriesData(response.data);
       })
       .catch((err) => console.error(err));
-  }, [inventoriesData]);
+  }, [currentUrl]);
+
+  if (inventoriesData === null || inventoriesData === undefined) {
+    return (
+      <ClipLoader
+        color="#232940"
+        cssOverride={{ display: "block", margin: "0 auto" }}
+        size={100}
+      />
+    );
+  }
 
   return (
     <>
-      <Inventory inventoriesData={inventoriesData} />
+      <Inventory
+        inventoriesData={inventoriesData}
+        setInventoriesData={setInventoriesData}
+      />
     </>
   );
 }

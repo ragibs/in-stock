@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import "./NewWarehouse.scss";
-
 import ArrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import Error from "../../assets/Icons/error-24px.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function NewWarehouse() {
   const [warehouseDetails, setWarehouseDetails] = useState({
@@ -18,6 +18,11 @@ function NewWarehouse() {
     phone: "",
     email: "",
   });
+
+  // disable fields when submitting
+  const [isdisabled, setIsDisabled] = useState(false);
+
+  const navigate = useNavigate();
 
   // Errors
   const [errorWarehouseName, setErrorWarehouseName] = useState(false);
@@ -36,6 +41,9 @@ function NewWarehouse() {
       [e.target.name]: e.target.value,
     });
   };
+
+  //toasty
+  const notify = (item) => toast.success(`${item} was added to warehouses.`);
 
   // Error Message component...move?
   const ErrorMessage = () => {
@@ -133,9 +141,14 @@ function NewWarehouse() {
           email: warehouseDetails.email,
         };
         const response = await axios.post(
-          "http://localhost:8080/warehouses/new",
+          "https://in-stock-20-server-production.up.railway.app/warehouses/new",
           newWarehouse
         );
+        setIsDisabled(true);
+        notify(newWarehouse.warehouseName);
+        setTimeout(() => {
+          navigate("/warehouses");
+        }, 3000);
         return response;
       } catch (error) {
         console.error(error);
@@ -168,6 +181,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorWarehouseName ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorWarehouseName && <ErrorMessage />}
             </label>
@@ -181,6 +195,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorStreet ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorStreet && <ErrorMessage />}
             </label>
@@ -194,6 +209,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorCity ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorCity && <ErrorMessage />}
             </label>
@@ -207,6 +223,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorCountry ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorCountry && <ErrorMessage />}
             </label>
@@ -223,6 +240,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorContactName ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorContactName && <ErrorMessage />}
             </label>
@@ -236,6 +254,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorPosition ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorPosition && <ErrorMessage />}
             </label>
@@ -249,6 +268,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorPhone ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorPhone && <ErrorMessage />}
             </label>
@@ -262,6 +282,7 @@ function NewWarehouse() {
                 className={`new-warehouse__form-input ${
                   errorEmail ? " new-warehouse__form-input--error" : ""
                 }`}
+                disabled={isdisabled}
               />
               {errorEmail && <ErrorMessage />}
             </label>
@@ -274,8 +295,22 @@ function NewWarehouse() {
           >
             Cancel
           </Link>
-          <button className="new-warehouse__button">+ Add Warehouse</button>
+          <button className="new-warehouse__button" disabled={isdisabled}>
+            + Add Warehouse
+          </button>
         </div>
+        <ToastContainer
+          position="bottom-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </form>
     </section>
   );

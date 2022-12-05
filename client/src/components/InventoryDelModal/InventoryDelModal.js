@@ -1,17 +1,24 @@
 import "./InventoryDelModal.scss";
 import axios from "axios";
 
-function InventoryDelModal({ setDeleteInvModal, deleteInventory }) {
+function InventoryDelModal({
+  setDeleteInvModal,
+  deleteInventory,
+  setInventoriesData,
+  notify,
+}) {
   const cancelHandler = () => {
     //if we click on X or cancel, the modal will close
     setDeleteInvModal(false);
   };
   const deleteHandler = () => {
-    let apiURL = `http://localhost:8080/inventories/${deleteInventory[1]}`;
+    let apiURL = `https://in-stock-20-server-production.up.railway.app/inventories/${deleteInventory[1]}`;
     axios
       .delete(apiURL)
-      .then((response) => alert("Inventory delete successful")) //confirmation that warehouse deleted
-      .then(setDeleteInvModal(false)) //remove modal after submit
+      .then((response) => setInventoriesData(response.data)) //confirmation that warehouse deleted
+      .then(setDeleteInvModal(false))
+      .then(notify(deleteInventory[0]))
+      // .then(navigate("/"))
       .catch((err) => console.error(err));
   };
   return (
