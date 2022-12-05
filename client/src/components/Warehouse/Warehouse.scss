@@ -25,12 +25,12 @@
     margin: -5rem 1rem 2rem;
     border-radius: 5px;
     width: 100%;
-    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);    
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     @include tablet {
       margin: -5.5rem 2rem 3rem;
     }
     @include desktop {
-      max-width: $desktop-breakpoint;      
+      max-width: $desktop-breakpoint;
       margin: -5.5rem auto 3rem;
     }
   }
@@ -110,11 +110,11 @@
     background-color: $interactive-elements;
     border: none;
     padding: 0.5rem;
-    text-align: center;    
+    text-align: center;
     @include tablet {
-      @include body-medium-tablet;  
+      @include body-medium-tablet;
       padding: 0.5 1rem;
-      height: 2.375rem;          
+      height: 2.375rem;
     }
     &:hover {
       background-color: $bg-hover-header;
@@ -136,6 +136,9 @@
     flex-direction: row;
     align-items: center;
     width: 21.25%;
+    &-sort {
+      cursor: pointer;
+    }
     // @include desktop {
     //     width: 22.5%;
     // }
@@ -215,8 +218,8 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    &:hover .warehouse__rightArrow{
-        transform: translate(4px);        
+    &:hover .warehouse__rightArrow {
+      transform: translate(4px);
     }
   }
   &__name {

@@ -1,17 +1,24 @@
 import "./DeleteModal.scss";
 import axios from "axios";
 
-function DeleteModal({ setDeleteModal, deleteWarehouse }) {
+function DeleteModal({
+  setDeleteModal,
+  deleteWarehouse,
+  notify,
+  setWarehousesData,
+}) {
   const cancelHandler = () => {
     //if we click on X or cancel, the modal will close
     setDeleteModal(false);
   };
+
   const deleteHandler = () => {
-    let apiURL = `http://localhost:8080/warehouses/${deleteWarehouse[1]}`;
+    let apiURL = `https://in-stock-20-server-production.up.railway.app/warehouses/${deleteWarehouse[1]}`;
     axios
       .delete(apiURL)
-      .then((response) => alert("Warehouse delete successful")) //confirmation that warehouse deleted
-      .then(setDeleteModal(false)) //remove modal after submit
+      .then((res) => setWarehousesData(res.data))
+      .then(setDeleteModal(false))
+      .then(notify(deleteWarehouse[0])) //remove modal after submit
       .catch((err) => console.error(err));
   };
   return (

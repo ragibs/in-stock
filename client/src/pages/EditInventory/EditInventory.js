@@ -1,46 +1,83 @@
+import "../../components/NewItem/NewItem.scss";
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import "./NewItem.scss";
 import ArrowBack from "../../assets/Icons/arrow_back-24px.svg";
 import ArrowDropDown from "../../assets/Icons/arrow_drop_down-24px.svg";
 import Error from "../../assets/Icons/error-24px.svg";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
-const NewItem = () => {
+function EditInventory() {
+  const { inventoryId } = useParams();
+  const [warehouses, setWarehouses] = useState(null); //get all the warehouse info
   const [itemDetails, setItemDetails] = useState({
-    name: "",
+    id: "",
+    warehouseID: "",
+    warehouseName: "",
+    itemName: "",
     description: "",
     category: "",
     status: "",
-    quantity: 0,
-    warehouseID: "",
-    warehouseName: "",
+    quantity: "",
   });
+
   // disable fields when submitting
   const [isdisabled, setIsDisabled] = useState(false);
 
-  const [warehouses, setWarehouses] = useState(null);
+  //toasty
+  const notify = (item) => toast.success(`${item} was updated successfully.`);
 
-  // Errors
+  let inventoryURL = `https://in-stock-20-server-production.up.railway.app/inventories/item/${inventoryId}`;
+
+  //get initial invetory data for the edit page
+  useEffect(() => {
+    axios.get(inventoryURL).then((response) => {
+      if (response.status === 200) {
+        setItemDetails({
+          id: response.data.id,
+          warehouseID: response.data[0].warehouseID,
+          warehouseName: response.data[0].warehouseName,
+          itemName: response.data[0].itemName,
+          description: response.data[0].description,
+          category: response.data[0].category,
+          status: response.data[0].status,
+          quantity: response.data[0].quantity,
+        });
+      }
+    });
+  }, [inventoryURL]);
+
+  // Set available warehouses on initial load
+  useEffect(() => {
+    const getWarehouses = async () => {
+      try {
+        const response = await axios.get(
+          "https://in-stock-20-server-production.up.railway.app/warehouses"
+        );
+        setWarehouses(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getWarehouses();
+  }, []);
+
+  // Set available categories on initial load
+  const categories = [
+    "Electronics",
+    "Gear",
+    "Apparel",
+    "Accessories",
+    "Health",
+  ];
+
+  //error stuff
   const [errorName, setErrorName] = useState(false);
   const [errorDescription, setErrorDescription] = useState(false);
   const [errorStatus, setErrorStatus] = useState(false);
 
-  const navigate = useNavigate();
-
-  // Update state for input in Add Item Section - keep all other fields as-is
-  const handleItemChange = (e) => {
-    setItemDetails({
-      ...itemDetails,
-      [e.target.name]: e.target.value,
-    });
-  };
-  //toasty
-  const notify = (item) => toast.success(`${item} added to inventories.`);
-
-  // Error Message component...move?
   const ErrorMessage = () => {
     return (
       <span className="new-item__form-error">
@@ -54,36 +91,25 @@ const NewItem = () => {
     );
   };
 
-  // Set available warehouses on initial load
-  useEffect(() => {
-    const getWarehouses = async () => {
-      try {
-        const response = await axios.get(
-          "https://in-stock-20-server-production.up.railway.app/warehouses"
-        );
-        setWarehouses(response.data);
-        setItemDetails({
-          ...itemDetails,
-          warehouseID: response.data[0].id,
-          warehouseName: response.data[0].name,
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const handleItemChange = (e) => {
+    setItemDetails({
+      ...itemDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-    getWarehouses();
-  }, []);
+  const inStockDefault = () => {
+    if (itemDetails.status === "In Stock") {
+      return true;
+    }
+  };
+  const OutStockDefault = () => {
+    if (itemDetails.status === "Out of Stock") {
+      return true;
+    }
+  };
 
-  // Set available warehouses on initial load
-  const categories = [
-    "Electronics",
-    "Gear",
-    "Apparel",
-    "Accessories",
-    "Health",
-  ];
-
+  const navigate = useNavigate();
   // Ugh, inline styles. gross.
   const dropDownArrow = {
     backgroundImage: `url(${ArrowDropDown})`,
@@ -102,7 +128,7 @@ const NewItem = () => {
     setErrorStatus(false);
 
     // FormValidation
-    if (itemDetails.name === "") {
+    if (itemDetails.itemName === "") {
       setErrorName(true);
       ready = false;
     }
@@ -120,24 +146,26 @@ const NewItem = () => {
       const quantity =
         itemDetails.status === "In Stock" ? itemDetails.quantity : 0;
       try {
-        const newItem = {
+        const updatedItem = {
+          id: itemDetails.id,
           warehouseID: itemDetails.warehouseID,
           warehouseName: itemDetails.warehouseName,
-          itemName: itemDetails.name,
+          itemName: itemDetails.itemName,
           category: itemDetails.category,
           description: itemDetails.description,
           status: itemDetails.status,
           quantity: quantity,
         };
-        const response = await axios.post(
-          "https://in-stock-20-server-production.up.railway.app/inventories",
-          newItem
+        const response = await axios.put(
+          `https://in-stock-20-server-production.up.railway.app/inventories/item/${inventoryId}`,
+          updatedItem
         );
         setIsDisabled(true);
-        notify(newItem.itemName);
+        notify(updatedItem.itemName);
         setTimeout(() => {
           navigate("/inventory");
         }, 3000);
+
         return response;
       } catch (error) {
         console.log(error);
@@ -152,7 +180,7 @@ const NewItem = () => {
           <Link to="/" className="new-item__header-link">
             <img src={ArrowBack} alt="Back Arrow Icon" />
           </Link>
-          Add New Inventory Item
+          Edit Inventory Item
         </h1>
         <div className="new-item__form-container">
           <div className="new-item__form-section new-item__form-section--details">
@@ -161,10 +189,10 @@ const NewItem = () => {
             <label htmlFor="name" className="new-item__form-label">
               Item Name
               <input
-                name="name"
+                name="itemName"
                 placeholder="Item Name"
-                value={itemDetails.name}
                 onChange={handleItemChange}
+                defaultValue={itemDetails.itemName}
                 className={`new-item__form-input ${
                   errorName ? " new-item__form-input--error" : ""
                 }`}
@@ -177,13 +205,12 @@ const NewItem = () => {
               Description
               <textarea
                 name="description"
+                defaultValue={itemDetails.description}
                 placeholder="Description"
-                value={itemDetails.description}
                 onChange={handleItemChange}
                 className={`new-item__form-textarea ${
                   errorDescription ? " new-item__form-textarea--error" : ""
                 }`}
-                disabled={isdisabled}
               ></textarea>
               {errorDescription && <ErrorMessage />}
             </label>
@@ -191,6 +218,7 @@ const NewItem = () => {
               Category
               <select
                 name="category"
+                disabled={isdisabled}
                 className="new-item__form-select"
                 style={dropDownArrow}
                 onChange={(e) => {
@@ -200,11 +228,14 @@ const NewItem = () => {
                     category: e.nativeEvent.target[index].text,
                   });
                 }}
-                disabled={isdisabled}
               >
                 {categories &&
                   categories.map((option) => (
-                    <option key={option} value={option}>
+                    <option
+                      key={option}
+                      value={option}
+                      selected={itemDetails.category === option}
+                    >
                       {option}
                     </option>
                   ))}
@@ -225,6 +256,7 @@ const NewItem = () => {
                     value="In Stock"
                     name="status"
                     className="new-item__radio"
+                    defaultChecked={inStockDefault()}
                     disabled={isdisabled}
                   />
                   <span
@@ -240,9 +272,10 @@ const NewItem = () => {
                 <div className="new-item__radio-box">
                   <input
                     type="radio"
-                    value="Out of Stock"
                     name="status"
+                    value="Out of Stock"
                     className="new-item__radio"
+                    defaultChecked={OutStockDefault()}
                     disabled={isdisabled}
                   />
                   <span
@@ -264,9 +297,9 @@ const NewItem = () => {
                 <input
                   name="quantity"
                   placeholder="Quantity"
-                  value={itemDetails.quantity}
                   onChange={handleItemChange}
                   className="new-item__form-input"
+                  defaultValue={itemDetails.quantity}
                   disabled={isdisabled}
                 />
               </label>
@@ -277,6 +310,7 @@ const NewItem = () => {
                 name="warehouse"
                 className="new-item__form-select"
                 style={dropDownArrow}
+                disabled={isdisabled}
                 onChange={(e) => {
                   let index = e.nativeEvent.target.selectedIndex;
                   setItemDetails({
@@ -285,7 +319,6 @@ const NewItem = () => {
                     warehouseName: e.nativeEvent.target[index].text,
                   });
                 }}
-                disabled={isdisabled}
               >
                 {warehouses &&
                   warehouses.map((option) => (
@@ -293,6 +326,7 @@ const NewItem = () => {
                       key={option.id}
                       value={option.id}
                       name={option.name}
+                      selected={option.name === itemDetails.warehouseName}
                     >
                       {option.name}
                     </option>
@@ -306,7 +340,7 @@ const NewItem = () => {
             Cancel
           </Link>
           <button className="new-item__button" disabled={isdisabled}>
-            + Add Item
+            Save
           </button>
         </div>
         <ToastContainer
@@ -324,6 +358,8 @@ const NewItem = () => {
       </form>
     </section>
   );
-};
+}
 
-export default NewItem;
+// back it up
+
+export default EditInventory;
