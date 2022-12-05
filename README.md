@@ -23,9 +23,19 @@ Here're some of the project's best features:
 
 <h2>📸  Screenshots</h2>
 
+### Mobile
 
-![instock-2netlifyapp_warehouses](https://user-images.githubusercontent.com/108539627/205542861-3851d6db-6e89-4280-8656-2baa8db51a75.png)
+![instock-2 netlify app_warehouses](https://user-images.githubusercontent.com/108539627/205543309-a8c98e5f-ccd1-4590-a547-d97cff1bfd95.png)
+![instock-2 netlify app_warehouses (3)](https://user-images.githubusercontent.com/108539627/205543440-215bb1ac-63dd-40ca-b767-c8ccc6b2aafd.png)
 
+
+### Tablet
+
+![instock-2 netlify app_warehouses (4)](https://user-images.githubusercontent.com/108539627/205543701-57e01599-c828-42c1-aa5d-42eae78c2693.png)
+
+### Desktop
+
+![instock-2 netlify app_warehouses (2)](https://user-images.githubusercontent.com/108539627/205543818-ecbdb27b-9d4e-46fc-9e91-3755777f0c34.png)
 
 
 <h2>🛠️ Installation Steps:</h2>
