@@ -21,6 +21,13 @@ Here're some of the project's best features:
 *   Ability to search through warehouses and inventories
 *   Ability to sort warehouse list and inventories list
 
+<h2>📸  Screenshots</h2>
+
+
+![instock-2netlifyapp_warehouses](https://user-images.githubusercontent.com/108539627/205542861-3851d6db-6e89-4280-8656-2baa8db51a75.png)
+
+
+
 <h2>🛠️ Installation Steps:</h2>
 
 <p>1. To start using this app you first need to clone the repository:</p>
