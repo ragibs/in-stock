@@ -1,6 +1,6 @@
 <h1 align="center" id="title">InStock</h1>
 
-<p id="description">A full-stack app built for warehouse and inventory management</p>
+<p id="description">A MERN stack app built for warehouse and inventory management</p>
 
  <h2>🚀 Demo</h2>
 
